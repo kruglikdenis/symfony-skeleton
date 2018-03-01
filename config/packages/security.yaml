@@ -25,7 +25,7 @@ security:
             stateless: true
             anonymous: true
             json_login:
-                check_path: /api/login_check
+                check_path: /api/login
                 username_path: identity
                 password_path: secret
                 success_handler: lexik_jwt_authentication.handler.authentication_success

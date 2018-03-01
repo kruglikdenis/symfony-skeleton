@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+    front:
+        environment:
+            - USE_CORS_PROXY=yes
+
+    database:
+        image: postgres:9.6
+        environment:
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_DB=${DB_NAME}
+            - POSTGRES_PASSWORD=${DB_PASS}
+            - PGPASSWORD=${DB_PASS}

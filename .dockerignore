@@ -1,0 +1,5 @@
+.git
+docker/*
+!docker/php/config
+var/*
+vendor

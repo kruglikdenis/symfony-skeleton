@@ -3,6 +3,7 @@
 namespace App\Users\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 
 /**
@@ -23,9 +24,4 @@ class User
      */
     private $fullName;
 
-    /**
-     * @var Credentials
-     * @ORM\Embedded(class="App\Users\Entity\Credentials", columnPrefix = false)
-     */
-    private $credentials;
 }

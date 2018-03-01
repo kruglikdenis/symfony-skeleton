@@ -12,6 +12,9 @@
     "require": {
         "php": "^7.1.3",
         "ext-iconv": "*",
+        "fesor/request-objects": "^0.3.0",
+        "lexik/jwt-authentication-bundle": "^2.4",
+        "pascaldevink/shortuuid": "^2.0",
         "symfony/console": "^4.0",
         "symfony/debug-bundle": "^4.0",
         "symfony/flex": "^1.0",
@@ -41,7 +44,7 @@
             "composer install",
             "docker-compose up -d",
             "docker-compose run --rm php bin/wait_for_db",
-            "docker/shortcuts/console doctr:migration:migrate -n --allow-no-migration",
+            "docker/shortcuts/console doctrine:migration:migrate -n --allow-no-migration",
             "docker/shortcuts/console doctrine:fixtures:load -n --fixtures tests/Fixtures/ORM"
         ],
         "prepare-project": [

@@ -18,5 +18,4 @@ services:
 
     database:
         ports:
-            # QA wants to work with database on server
             - 0.0.0.0:5432:5432

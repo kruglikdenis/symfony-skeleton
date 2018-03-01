@@ -59,6 +59,9 @@
     "doctrine/orm": {
         "version": "v2.5.13"
     },
+    "fesor/request-objects": {
+        "version": "v0.3.0"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -77,17 +80,38 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "lexik/jwt-authentication-bundle": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.3",
+            "ref": "751ee6748c1026fa4350c155d1b3a77b7ddca69c"
+        }
+    },
     "monolog/monolog": {
         "version": "1.23.0"
     },
+    "moontoast/math": {
+        "version": "1.1.2"
+    },
     "myclabs/deep-copy": {
         "version": "1.7.0"
+    },
+    "namshi/jose": {
+        "version": "7.2.3"
     },
     "ocramius/package-versions": {
         "version": "1.2.0"
     },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
+    },
+    "paragonie/random_compat": {
+        "version": "v2.0.11"
+    },
+    "pascaldevink/shortuuid": {
+        "version": "2.0.1"
     },
     "php-cs-fixer/diff": {
         "version": "v1.2.0"
@@ -142,6 +166,9 @@
     },
     "psr/simple-cache": {
         "version": "1.0.0"
+    },
+    "ramsey/uuid": {
+        "version": "3.7.3"
     },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"
@@ -323,6 +350,15 @@
     "symfony/stopwatch": {
         "version": "v4.0.2"
     },
+    "symfony/translation": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "6bcd6c570c017ea6ae5a7a6a027c929fd3542cd8"
+        }
+    },
     "symfony/twig-bridge": {
         "version": "v4.0.2"
     },
@@ -334,6 +370,9 @@
             "version": "3.3",
             "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
         }
+    },
+    "symfony/validator": {
+        "version": "v4.0.4"
     },
     "symfony/var-dumper": {
         "version": "v4.0.2"

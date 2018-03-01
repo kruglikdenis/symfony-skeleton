@@ -8,7 +8,8 @@ RUN docker-php-ext-install \
         gmp \
         mbstring \
         opcache \
-        pdo pdo_pgsql
+        pdo pdo_pgsql \
+        bcmath
 
 RUN yes | pecl install apcu xdebug-beta \
         && echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini \

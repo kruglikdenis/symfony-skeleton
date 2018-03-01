@@ -29,5 +29,12 @@
         <!-- Configure your db driver and server_version in config/packages/doctrine.yaml -->
         <env name="DATABASE_URL" value="mysql://db_user:db_password@127.0.0.1:3306/db_name"/>
         <!-- ###- doctrine/doctrine-bundle ### -->
+
+        <!-- ###+ lexik/jwt-authentication-bundle ### -->
+        <!-- Key paths should be relative to the project directory -->
+        <env name="JWT_PRIVATE_KEY_PATH" value="config/jwt/private.pem"/>
+        <env name="JWT_PUBLIC_KEY_PATH" value="config/jwt/public.pem"/>
+        <env name="JWT_PASSPHRASE" value="aaf8ca1046c1ac6a2703344f22ed90b4"/>
+        <!-- ###- lexik/jwt-authentication-bundle ### -->
     </php>
 </phpunit>

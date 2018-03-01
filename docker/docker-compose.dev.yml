@@ -12,3 +12,5 @@ services:
             - POSTGRES_DB=${DB_NAME}
             - POSTGRES_PASSWORD=${DB_PASS}
             - PGPASSWORD=${DB_PASS}
+        ports:
+            - 0.0.0.0:5432:5432

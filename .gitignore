@@ -21,3 +21,4 @@ docker/keys/*
 ###< symfony/phpunit-bridge ###
 .idea
 .DS_Store
+.env

@@ -20,24 +20,17 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        api_login:
-            pattern:  ^/api/login
-            stateless: true
-            anonymous: true
-            json_login:
-                check_path: /api/login
-                username_path: identity
-                password_path: secret
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
-
         api:
-            pattern:    ^/api
-            stateless:  true
-            provider:   entity_provider
+            pattern: ^/api
+            stateless: true
+            anonymous: ~
+            provider: entity_provider
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
+
+        default:
+            anonymous: ~
 
             # activate different ways to authenticate
 

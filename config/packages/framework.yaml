@@ -4,3 +4,5 @@ framework:
         handler_id: ~
     php_errors:
         log: true
+    validation:
+        enabled: true

@@ -10,10 +10,14 @@ services:
         autoconfigure: true
         public: false
 
-#    App\Controller\:
-#        resource: '../src/Controller'
-#        tags: ['controller.service_arguments']
+    App\Users\:
+        resource: '../src/Users/*'
+        exclude: '../src/Users/{Entity}'
 
     App\Common\Doctrine\MigrationEventSubscriber:
         tags:
             - { name: 'doctrine.event_subscriber', connection: 'default' }
+
+    App\Common\EventListener\JsonRequestTransformerListener:
+        tags:
+          - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }

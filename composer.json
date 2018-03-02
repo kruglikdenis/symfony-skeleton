@@ -15,6 +15,7 @@
         "fesor/request-objects": "^0.3.0",
         "lexik/jwt-authentication-bundle": "^2.4",
         "pascaldevink/shortuuid": "^2.0",
+        "sensio/framework-extra-bundle": "^5.1",
         "symfony/console": "^4.0",
         "symfony/debug-bundle": "^4.0",
         "symfony/flex": "^1.0",

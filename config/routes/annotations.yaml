@@ -1,3 +1,6 @@
-#controllers:
-#    resource: ../../src/Controller/
-#    type: annotation
+api_user:
+    resource: ../../src/Users/Action/
+    type: annotation
+    prefix: /api
+    defaults:
+        _format: json

@@ -4,7 +4,7 @@ namespace App\Users\Entity;
 
 use App\Users\Entity\Security\Identifiable;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Ramsey\Uuid\Uuid;
 
 
 /**
@@ -30,6 +30,11 @@ class User implements Identifiable
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
+
+    public function __construct()
+    {
+        $this->id = Uuid::uuid4();
+    }
 
     public function identity(): string
     {

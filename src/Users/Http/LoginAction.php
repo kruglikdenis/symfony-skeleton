@@ -3,16 +3,21 @@
 namespace App\Users\Action;
 
 
+use App\Users\Entity\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\ConstraintViolationList;
 
 class LoginAction
 {
-    public function __construct()
+    /**
+     * @var UserRepository
+     */
+    private $users;
+
+    public function __construct(UserRepository $users)
     {
+        $this->users = $users;
     }
 
 
@@ -25,6 +30,8 @@ class LoginAction
      */
     public function __invoke(LoginRequest $request)
     {
+        $user = $this->users->retrieveByEmail($request->email);
+
         return new JsonResponse($request->all(), 201);
     }
 }

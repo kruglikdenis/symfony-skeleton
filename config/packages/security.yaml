@@ -1,7 +1,7 @@
 security:
 
     encoders:
-        App\Users\Entity\Credentials:
+        App\User\Entity\Security\Credentials:
             algorithm: bcrypt
 
     role_hierarchy:
@@ -12,7 +12,7 @@ security:
     providers:
         entity_provider:
             entity:
-                class: App\Users\Entity\Credentials
+                class: App\User\Entity\Credentials
                 property: identity
 
     firewalls:

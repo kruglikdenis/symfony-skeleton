@@ -3,8 +3,7 @@
 namespace App\User\Entity\Security;
 
 
-use App\Common\Doctrine\CustomHydrator;
-use App\Common\EntityNotFoundException;
+use App\Common\Exception\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 
 class CredentialsRepository
@@ -28,15 +27,15 @@ class CredentialsRepository
         $qb->select('c')
             ->from(Credentials::class, 'c')
             ->where($expr->eq(
-                $expr->lower('c.email'),
+                $expr->lower('c.email.email'),
                 ':email'
             ))
             ->setParameter('email', $email);
 
-        $credentials = $qb->getQuery()->getOneOrNullResult(CustomHydrator::NestedArrayHydrator);
+        $credentials = $qb->getQuery()->getOneOrNullResult();
 
         if (null === $credentials) {
-            throw new EntityNotFoundException('Wrong email');
+            throw new EntityNotFoundException('No user with this identity');
         }
 
         return $credentials;

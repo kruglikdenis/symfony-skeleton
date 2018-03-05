@@ -3,7 +3,6 @@
 namespace App\User\Entity;
 
 
-use App\Common\Doctrine\CustomHydrator;
 use Doctrine\ORM\EntityManagerInterface;
 
 class UserRepository

@@ -2,7 +2,7 @@
 
 namespace App\Common\EventListener;
 
-use App\Common\DomainException;
+use App\Common\Exception\DomainException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
@@ -16,6 +16,11 @@ class DomainExceptionListener
             return;
         }
 
-        $event->setResponse(new JsonResponse($e->getMessage(), $e->getCode()));
+        $response = new JsonResponse([
+            'status_code' => $e->getCode(),
+            'message' => $e->getMessage()
+        ], $e->getCode());
+
+        $event->setResponse($response);
     }
 }

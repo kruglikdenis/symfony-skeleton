@@ -4,6 +4,7 @@ namespace App\User\Http;
 
 
 use App\User\Entity\Security\CredentialsRepository;
+use App\User\Entity\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -30,8 +31,8 @@ class LoginAction
      */
     public function __invoke(LoginRequest $request)
     {
-//        $credentials = $this->credentials->retrieveByEmail($request->email);
+        $credentials = $this->credentials->retrieveByEmail($request->email);
 
-        return new JsonResponse($request->all(), 201);
+        return $credentials;
     }
 }

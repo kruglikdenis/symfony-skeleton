@@ -3,16 +3,15 @@
 parameters:
     locale: 'en'
 
+imports:
+    - { resource: services/users.yaml }
+
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true
         autoconfigure: true
         public: false
-
-    App\Users\:
-        resource: '../src/Users/*'
-        exclude: '../src/Users/{Entity}'
 
     App\Common\Doctrine\MigrationEventSubscriber:
         tags:
@@ -22,6 +21,6 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
 
-    AppBundle\Listener\DomainExceptionListener:
+    App\Common\EventListener\DomainExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }

@@ -1,5 +1,5 @@
 api_user:
-    resource: ../../src/Users/Action/
+    resource: ../../src/User/Http/
     type: annotation
     prefix: /api
     defaults:

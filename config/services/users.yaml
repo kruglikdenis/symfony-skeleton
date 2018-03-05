@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\User\Http\:
+        resource: '../../src/User/Http/*'
+
+    App\User\Entity\Security\CredentialsRepository:
+    App\User\Entity\UserRepository:

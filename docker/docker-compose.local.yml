@@ -7,8 +7,6 @@ services:
             - "../.:/app"
 
     front:
-        ports:
-            - 0.0.0.0:8080:80
         environment:
             - VIRTUAL_HOST=template.docker
             - VIRTUAL_PORT=80

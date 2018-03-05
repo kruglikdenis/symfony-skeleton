@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "113cd930efea3fc4869b8e97d13db1a9",
+    "content-hash": "2087fdb57f53578bd0f18c067747691f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -919,6 +919,63 @@
             "time": "2017-11-27T23:25:55+00:00"
         },
         {
+            "name": "egulias/email-validator",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
+                "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/lexer": "^1.0.1",
+                "php": ">= 5.5"
+            },
+            "require-dev": {
+                "dominicsayers/isemail": "dev-master",
+                "phpunit/phpunit": "^4.8.35",
+                "satooshi/php-coveralls": "^1.0.1"
+            },
+            "suggest": {
+                "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Egulias\\EmailValidator\\": "EmailValidator"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis"
+                }
+            ],
+            "description": "A library for validating emails against several RFCs",
+            "homepage": "https://github.com/egulias/EmailValidator",
+            "keywords": [
+                "email",
+                "emailvalidation",
+                "emailvalidator",
+                "validation",
+                "validator"
+            ],
+            "time": "2017-11-15T23:40:40+00:00"
+        },
+        {
             "name": "fesor/request-objects",
             "version": "v0.3.0",
             "source": {
@@ -960,6 +1017,105 @@
             ],
             "description": "Custom request objects for Symfony made to make life less painful",
             "time": "2018-01-28T20:25:53+00:00"
+        },
+        {
+            "name": "gpslab/domain-event",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gpslab/domain-event.git",
+                "reference": "89b52c4fbed0e52e51d4a9d243a2877baac0ba36"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gpslab/domain-event/zipball/89b52c4fbed0e52e51d4a9d243a2877baac0ba36",
+                "reference": "89b52c4fbed0e52e51d4a9d243a2877baac0ba36",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*",
+                "predis/predis": "~1.0|~1.1",
+                "psr/container": "~1.0",
+                "psr/log": "~1.0",
+                "satooshi/php-coveralls": "^1.0",
+                "scrutinizer/ocular": "1.3.*",
+                "symfony/dependency-injection": "~2.3|~3.0",
+                "symfony/serializer": "~2.3|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GpsLab\\Domain\\Event\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Tools to create the domain layer of your DDD application",
+            "homepage": "https://github.com/gpslab/domain-event",
+            "keywords": [
+                "ddd",
+                "domain-event",
+                "infrastructure",
+                "predis",
+                "symfony"
+            ],
+            "time": "2017-10-02T14:41:13+00:00"
+        },
+        {
+            "name": "gpslab/domain-event-bundle",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gpslab/domain-event-bundle.git",
+                "reference": "83de4e8c0e2712b7b1ddd7cba1c52f107af6461a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gpslab/domain-event-bundle/zipball/83de4e8c0e2712b7b1ddd7cba1c52f107af6461a",
+                "reference": "83de4e8c0e2712b7b1ddd7cba1c52f107af6461a",
+                "shasum": ""
+            },
+            "require": {
+                "gpslab/domain-event": "~2.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.4|~2.5",
+                "phpunit/phpunit": "~4.8",
+                "satooshi/php-coveralls": "^1.0",
+                "scrutinizer/ocular": "~1.3",
+                "symfony/dependency-injection": "~2.3|~3.0",
+                "symfony/expression-language": "~2.3|~3.0",
+                "symfony/http-kernel": "~2.3|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GpsLab\\Bundle\\DomainEvent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Bundle to create the domain layer of your DDD application",
+            "homepage": "https://github.com/gpslab/domain-event-bundle",
+            "time": "2017-10-03T09:11:07+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1999,6 +2155,61 @@
                 "controllers"
             ],
             "time": "2018-02-14T08:40:54+00:00"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v6.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "412333372fb6c8ffb65496a2bbd7321af75733fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/412333372fb6c8ffb65496a2bbd7321af75733fc",
+                "reference": "412333372fb6c8ffb65496a2bbd7321af75733fc",
+                "shasum": ""
+            },
+            "require": {
+                "egulias/email-validator": "~2.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1",
+                "symfony/phpunit-bridge": "~3.3@dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Corbyn"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.symfony.com",
+            "keywords": [
+                "email",
+                "mail",
+                "mailer"
+            ],
+            "time": "2017-09-30T22:39:41+00:00"
         },
         {
             "name": "symfony/cache",
@@ -3911,6 +4122,68 @@
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
             "time": "2017-11-09T12:45:29+00:00"
+        },
+        {
+            "name": "symfony/swiftmailer-bundle",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/swiftmailer-bundle.git",
+                "reference": "7756867d9b21231ae0ce746a6b861b7e293cc885"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/7756867d9b21231ae0ce746a6b861b7e293cc885",
+                "reference": "7756867d9b21231ae0ce746a6b861b7e293cc885",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "swiftmailer/swiftmailer": "^6.0.1",
+                "symfony/config": "~2.8|~3.3|~4.0",
+                "symfony/dependency-injection": "~2.7|~3.3|~4.0",
+                "symfony/http-kernel": "~2.7|~3.3|~4.0"
+            },
+            "require-dev": {
+                "symfony/console": "~2.7|~3.3|~4.0",
+                "symfony/framework-bundle": "~2.7|~3.3|~4.0",
+                "symfony/phpunit-bridge": "~3.3|~4.0",
+                "symfony/yaml": "~2.7|~3.3|~4.0"
+            },
+            "suggest": {
+                "psr/log": "Allows logging"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\SwiftmailerBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony SwiftmailerBundle",
+            "homepage": "http://symfony.com",
+            "time": "2018-02-14T08:09:24+00:00"
         },
         {
             "name": "symfony/translation",

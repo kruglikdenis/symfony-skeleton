@@ -22,5 +22,5 @@ doctrine:
         mappings:
             users:
                 type: annotation
-                dir: '%kernel.project_dir%/src/Users/Entity'
-                prefix: 'App\Users\Entity'
+                dir: '%kernel.project_dir%/src/User/Entity'
+                prefix: 'App\User\Entity'

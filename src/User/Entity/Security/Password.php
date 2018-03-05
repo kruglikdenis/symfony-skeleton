@@ -20,7 +20,7 @@ class Password implements \Serializable
 
     /**
      * @var Salt
-     * @ORM\Embedded(class="App\User\Entity\Security\Salt")
+     * @ORM\Embedded(class="App\User\Entity\Security\Salt", columnPrefix=false)
      */
     private $salt;
 

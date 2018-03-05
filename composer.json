@@ -13,6 +13,7 @@
         "php": "^7.1.3",
         "ext-iconv": "*",
         "fesor/request-objects": "^0.3.0",
+        "gpslab/domain-event-bundle": "^2.1",
         "lexik/jwt-authentication-bundle": "^2.4",
         "pascaldevink/shortuuid": "^2.0",
         "sensio/framework-extra-bundle": "^5.1",
@@ -26,6 +27,7 @@
         "symfony/profiler-pack": "^1.0",
         "symfony/security-bundle": "^4.0",
         "symfony/serializer-pack": "^1.0",
+        "symfony/swiftmailer-bundle": "^3.2",
         "symfony/yaml": "^4.0"
     },
     "require-dev": {

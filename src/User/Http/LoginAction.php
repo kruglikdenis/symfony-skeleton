@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Users\Action;
+namespace App\User\Http;
 
 
-use App\Users\Entity\UserRepository;
+use App\User\Entity\Security\CredentialsRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,13 +11,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class LoginAction
 {
     /**
-     * @var UserRepository
+     * @var CredentialsRepository
      */
-    private $users;
+    private $credentials;
 
-    public function __construct(UserRepository $users)
+    public function __construct(CredentialsRepository $credentials)
     {
-        $this->users = $users;
+        $this->credentials = $credentials;
     }
 
 
@@ -30,7 +30,7 @@ class LoginAction
      */
     public function __invoke(LoginRequest $request)
     {
-        $user = $this->users->retrieveByEmail($request->email);
+//        $credentials = $this->credentials->retrieveByEmail($request->email);
 
         return new JsonResponse($request->all(), 201);
     }

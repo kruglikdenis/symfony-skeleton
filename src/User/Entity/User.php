@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Users\Entity;
+namespace App\User\Entity;
 
-use App\Users\Entity\Security\Identifiable;
+use App\User\Entity\Security\Identifiable;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
@@ -21,7 +21,7 @@ class User implements Identifiable
 
     /**
      * @var FullName
-     * @ORM\Embedded(class="App\Users\Entity\FullName")
+     * @ORM\Embedded(class="App\User\Entity\FullName")
      */
     private $fullName;
 

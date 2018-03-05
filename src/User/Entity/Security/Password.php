@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Users\Entity\Security;
+namespace App\User\Entity\Security;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
@@ -20,7 +20,7 @@ class Password implements \Serializable
 
     /**
      * @var Salt
-     * @ORM\Embedded(class="App\Users\Entity\Security\Salt")
+     * @ORM\Embedded(class="App\User\Entity\Security\Salt")
      */
     private $salt;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Users\Entity\Security;
+namespace App\User\Entity\Security;
 
-use App\Users\Entity\User;
+use App\User\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -21,13 +21,13 @@ class Credentials implements UserInterface, \Serializable
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Embedded(class="App\User\Entity\Security\Email", columnPrefix=false)
      */
-    private $identity;
+    private $email;
 
     /**
      * @var Password
-     * @ORM\Embedded(class="App\Users\Entity\Security\Password")
+     * @ORM\Embedded(class="App\User\Entity\Security\Password", columnPrefix=false)
      */
     private $password;
 
@@ -37,18 +37,11 @@ class Credentials implements UserInterface, \Serializable
      */
     private $roles;
 
-    /**
-     * @var User
-     * @ORM\OneToOne(targetEntity="App\Users\Entity\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
 
-    public function __construct(User $user, Password $password, array $roles)
+    public function __construct(Email $email, Password $password, array $roles)
     {
         $this->id = Uuid::uuid4();
-        $this->user = $user;
-        $this->identity = $user->identity();
+        $this->email = $email;
         $this->password = $password;
         $this->roles = $roles;
     }

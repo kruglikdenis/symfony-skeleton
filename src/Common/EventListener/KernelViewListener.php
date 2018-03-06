@@ -7,13 +7,19 @@ namespace App\Common\EventListener;
 use App\Common\Annotation\AnnotationResolver;
 use App\Common\Annotation\ResponseCode;
 use App\Common\Annotation\ResponseGroup;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\Serializer\Serializer;
 
-class JsonResponseTransformerListener
+class KernelViewListener
 {
+    /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
     /**
      * @var Serializer
      */
@@ -24,18 +30,26 @@ class JsonResponseTransformerListener
      */
     private $annotationResolver;
 
-    public function __construct(Serializer $serializer = null, AnnotationResolver $annotationResolver)
+    public function __construct(EntityManagerInterface $em, Serializer $serializer = null, AnnotationResolver $annotationResolver)
     {
+        $this->em = $em;
         $this->serializer = $serializer;
         $this->annotationResolver = $annotationResolver;
     }
 
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
-        if (!$event->isMasterRequest()) {
-            return;
-        }
+        $this->flushChanges();
+        $this->transformResponse($event);
+    }
 
+    /**
+     * Transform response data
+     *
+     * @param GetResponseForControllerResultEvent $event
+     */
+    private function transformResponse(GetResponseForControllerResultEvent $event)
+    {
         $request = $event->getRequest();
         $result = $event->getControllerResult();
         if ($result instanceof Response) {
@@ -45,7 +59,7 @@ class JsonResponseTransformerListener
         $response = new JsonResponse();
         $response->setStatusCode($this->annotationResolver->resolve($request, ResponseCode::class) ?? 200);
         if (!is_scalar($result)) {
-            $result = $this->getSerializer()->normalize($result, $request->getRequestFormat(), [
+            $result = $this->serializer->normalize($result, $request->getRequestFormat(), [
                 'groups' => $this->annotationResolver->resolve($request, ResponseGroup::class)
             ]);
         }
@@ -54,14 +68,11 @@ class JsonResponseTransformerListener
         $event->setResponse($response);
     }
 
-    private function getSerializer()
+    /**
+     * Flush changes
+     */
+    private function flushChanges()
     {
-        if (null === $this->serializer) {
-            throw new \BadMethodCallException('You should enable `serializer` in `config.yml` to get this work');
-        }
-
-        return $this->serializer;
+        $this->em->flush();
     }
-
-
 }

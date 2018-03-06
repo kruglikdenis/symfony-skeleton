@@ -6,6 +6,8 @@ services:
 
     App\User\Http\:
         resource: '../../src/User/Http/*'
+        public: false
+        tags: ['controller.service_arguments']
 
     App\User\Entity\Security\CredentialsRepository:
     App\User\Entity\UserRepository:

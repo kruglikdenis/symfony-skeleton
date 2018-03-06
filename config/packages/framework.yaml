@@ -1,5 +1,8 @@
 framework:
     secret: '%env(APP_SECRET)%'
+    serializer:
+        enable_annotations: true
+        name_converter: 'serializer.name_converter.camel_case_to_snake_case'
     session:
         handler_id: ~
     php_errors:

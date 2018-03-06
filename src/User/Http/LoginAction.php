@@ -3,11 +3,13 @@
 namespace App\User\Http;
 
 
+use App\Common\Annotation\ResponseCode;
+use App\Common\Annotation\ResponseGroup;
+use App\User\Entity\Security\Credentials;
 use App\User\Entity\Security\CredentialsRepository;
-use App\User\Entity\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 class LoginAction
 {
@@ -21,18 +23,17 @@ class LoginAction
         $this->credentials = $credentials;
     }
 
-
     /**
      * @Route("/login")
      * @Method({"POST"})
+     * @ResponseGroup({"api_login"})
+     * @ResponseCode(200)
      *
      * @param LoginRequest $request
-     * @return JsonResponse
+     * @return Credentials
      */
     public function __invoke(LoginRequest $request)
     {
-        $credentials = $this->credentials->retrieveByEmail($request->email);
-
-        return $credentials;
+        return $this->credentials->retrieveByEmail($request->email);
     }
 }

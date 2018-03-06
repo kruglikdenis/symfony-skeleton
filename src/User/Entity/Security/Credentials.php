@@ -2,7 +2,6 @@
 
 namespace App\User\Entity\Security;
 
-use App\User\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity
  * @ORM\Table(name="credentials")
  */
-class Credentials implements UserInterface, \Serializable
+class Credentials implements UserInterface
 {
     /**
      * @ORM\Id
@@ -63,30 +62,10 @@ class Credentials implements UserInterface, \Serializable
 
     public function getUsername()
     {
-        return $this->identity;
+        return $this->email;
     }
 
     public function eraseCredentials()
     {
-    }
-
-    public function serialize()
-    {
-        return serialize([
-            $this->id,
-            $this->identity,
-            $this->password,
-            $this->roles
-        ]);
-    }
-
-    public function unserialize($serialized)
-    {
-        list(
-            $this->id,
-            $this->identity,
-            $this->password,
-            $this->roles
-        ) = unserialize($serialized);
     }
 }

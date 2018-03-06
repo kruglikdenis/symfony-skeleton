@@ -10,3 +10,4 @@ services:
         environment:
             - VIRTUAL_HOST=template.docker
             - VIRTUAL_PORT=80
+            - PHP_IDE_CONFIG="serverName=template"

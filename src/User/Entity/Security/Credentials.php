@@ -20,9 +20,9 @@ class Credentials implements UserInterface
 
     /**
      * @var string
-     * @ORM\Embedded(class="App\User\Entity\Security\Email", columnPrefix=false)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $email;
+    private $identify;
 
     /**
      * @var Password
@@ -37,10 +37,10 @@ class Credentials implements UserInterface
     private $roles;
 
 
-    public function __construct(Email $email, Password $password, array $roles)
+    public function __construct(Identifiable $user, Password $password, array $roles)
     {
-        $this->id = Uuid::uuid4();
-        $this->email = $email;
+        $this->id = $user->uuid();
+        $this->identify = $user->identify();
         $this->password = $password;
         $this->roles = $roles;
     }
@@ -62,7 +62,7 @@ class Credentials implements UserInterface
 
     public function getUsername()
     {
-        return $this->email;
+        return $this->identify;
     }
 
     public function eraseCredentials()

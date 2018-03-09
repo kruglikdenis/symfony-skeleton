@@ -2,7 +2,7 @@
 
 namespace App\User\Entity\Security;
 
-use App\Common\InvalidArgumentException;
+use App\Common\Exception\InvalidArgumentException;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

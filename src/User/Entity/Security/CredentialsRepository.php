@@ -6,7 +6,7 @@ namespace App\User\Entity\Security;
 use App\Common\Exception\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 
-class CredentialsRepository
+class CredentialsRepository implements EmailResolver
 {
     private $em;
 
@@ -16,18 +16,18 @@ class CredentialsRepository
     }
 
     /**
-     * @param string $email
+     * @param Email $email
      * @return Credentials
      * @throws EntityNotFoundException
      */
-    public function retrieveByEmail(string $email): Credentials
+    public function retrieveByEmail(Email $email): Credentials
     {
         $qb = $this->em->createQueryBuilder();
         $expr = $qb->expr();
         $qb->select('c')
             ->from(Credentials::class, 'c')
             ->where($expr->eq(
-                $expr->lower('c.email.email'),
+                $expr->lower('c.identify'),
                 ':email'
             ))
             ->setParameter('email', $email);

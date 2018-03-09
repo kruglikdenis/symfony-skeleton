@@ -63,7 +63,7 @@ class KernelViewListener
                 'groups' => $this->annotationResolver->resolve($request, ResponseGroup::class)
             ]);
         }
-
+        
         $response->setData($result);
         $event->setResponse($response);
     }

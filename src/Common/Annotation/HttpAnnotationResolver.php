@@ -7,7 +7,7 @@ use Doctrine\Common\Annotations\Reader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ControllerResolverInterface;
 
-class RequestAnnotationResolver implements AnnotationResolver
+class HttpAnnotationResolver implements AnnotationResolver
 {
     /**
      * @var ControllerResolverInterface

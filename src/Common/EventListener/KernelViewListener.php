@@ -48,7 +48,7 @@ class KernelViewListener
      *
      * @param GetResponseForControllerResultEvent $event
      */
-    private function transformResponse(GetResponseForControllerResultEvent $event)
+    private function transformResponse(GetResponseForControllerResultEvent $event): void
     {
         $request = $event->getRequest();
         $result = $event->getControllerResult();
@@ -56,16 +56,53 @@ class KernelViewListener
             return;
         }
 
-        $response = new JsonResponse();
-        $response->setStatusCode($this->annotationResolver->resolve($request, ResponseCode::class) ?? 200);
-        if (!is_scalar($result)) {
-            $result = $this->serializer->normalize($result, $request->getRequestFormat(), [
-                'groups' => $this->annotationResolver->resolve($request, ResponseGroup::class)
-            ]);
+        $format = $request->getRequestFormat();
+        if (!$this->serializer->supportsEncoding($format)) {
+            return;
         }
-        
-        $response->setData($result);
-        $event->setResponse($response);
+
+        $code = $this->annotationResolver->resolve($request, ResponseCode::class) ?? 200;
+        $context = [
+            'groups' => $this->annotationResolver->resolve($request, ResponseGroup::class)
+        ];
+        $data = $this->normalize($result, $format, $context);
+        $event->setResponse(
+            new Response($this->serializer->serialize($data, $format, $context), $code)
+        );
+    }
+
+
+    private function normalize($data, string $format, array $context = [])
+    {
+        if (is_iterable($data)) {
+            if ($data instanceof \Traversable) {
+                $data = iterator_to_array($data);
+            }
+
+            $bad = array_filter($data, function ($item) use ($format) {
+                if (!is_object($item)) {
+                    return true;
+                }
+
+                if (!$this->serializer->supportsNormalization($item, $format)) {
+                    return true;
+                }
+
+                return false;
+            });
+
+            if (!count($bad)) {
+                $data = array_map(function ($item) use ($format, $context) {
+                    return $this->serializer->normalize($item, $format, $context);
+                }, $data);
+            }
+        }
+
+        if (is_object($data) && !$this->serializer->supportsNormalization($data, $format)) {
+            return null;
+        }
+
+        return $data;
     }
 
     /**

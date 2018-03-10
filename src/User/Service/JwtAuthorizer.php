@@ -4,7 +4,7 @@ namespace App\User\Service;
 
 
 use App\User\Entity\Security\AuthToken;
-use App\User\Entity\Security\Credentials;
+use App\User\Entity\Security\Credential;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Events;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -29,7 +29,7 @@ class JwtAuthorizer implements Authorizer
         $this->dispatcher = $dispatcher;
     }
 
-    public function authorize(Credentials $credentials): AuthToken
+    public function authorize(Credential $credentials): AuthToken
     {
         $jwt = $this->jwtManager->create($credentials);
 

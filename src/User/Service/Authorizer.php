@@ -3,9 +3,9 @@
 namespace App\User\Service;
 
 
-use App\User\Entity\Security\Credentials;
+use App\User\Entity\Security\Credential;
 
 interface Authorizer
 {
-    public function authorize(Credentials $credentials);
+    public function authorize(Credential $credentials);
 }

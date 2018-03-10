@@ -2,9 +2,6 @@
 
 namespace App\User\Entity;
 
-use App\User\Entity\Security\Credentials;
-use App\User\Entity\Security\Email;
-use App\User\Entity\Security\Password;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 

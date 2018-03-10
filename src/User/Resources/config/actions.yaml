@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\User\Http\LoginAction:
+        arguments:
+            - '@App\User\Entity\Security\CredentialsRepository'
+            - '@App\User\Service\JwtAuthorizer'
+        tags: ['controller.service_arguments']

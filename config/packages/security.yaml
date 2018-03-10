@@ -10,10 +10,8 @@ security:
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        entity_provider:
-            entity:
-                class: App\User\Entity\Credentials
-                property: identity
+        api_provider:
+            id: App\User\Service\CredentialsProvider
 
     firewalls:
         dev:
@@ -24,7 +22,7 @@ security:
             pattern: ^/api
             stateless: true
             anonymous: ~
-            provider: entity_provider
+            provider: api_provider
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator

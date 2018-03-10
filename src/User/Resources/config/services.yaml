@@ -1,0 +1,16 @@
+imports:
+    - { resource: ./actions.yaml }
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\User\Entity\Security\CredentialsRepository:
+    App\User\Entity\UserRepository:
+    App\User\Service\JwtAuthorizer:
+
+    App\User\Service\CredentialsProvider:
+        arguments:
+            - '@App\User\Entity\Security\CredentialsRepository'

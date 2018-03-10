@@ -27,10 +27,10 @@ class CredentialsRepository implements EmailResolver
         $qb->select('c')
             ->from(Credentials::class, 'c')
             ->where($expr->eq(
-                $expr->lower('c.identify'),
+                $expr->lower('c.email.email'),
                 ':email'
             ))
-            ->setParameter('email', $email);
+            ->setParameter('email', (string) $email);
 
         $credentials = $qb->getQuery()->getOneOrNullResult();
 

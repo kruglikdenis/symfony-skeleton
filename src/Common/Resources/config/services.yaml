@@ -1,0 +1,33 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    request_annotation_resolver:
+        class: 'App\Common\Annotation\HttpAnnotationResolver'
+        public: true
+        arguments:
+            - '@controller_resolver'
+            - '@annotations.reader'
+
+    App\Common\Doctrine\MigrationEventSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber, connection: 'default' }
+
+    App\Common\EventListener\JsonRequestTransformerListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
+
+    App\Common\EventListener\KernelViewListener:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@serializer'
+            - '@request_annotation_resolver'
+        tags:
+            - { name: kernel.event_listener, event: kernel.view }
+
+    App\Common\EventListener\DomainExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }

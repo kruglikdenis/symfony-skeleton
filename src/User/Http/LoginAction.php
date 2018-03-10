@@ -7,6 +7,9 @@ use App\Common\Annotation\ResponseCode;
 use App\Common\Annotation\ResponseGroup;
 use App\User\Entity\Security\Credentials;
 use App\User\Entity\Security\CredentialsRepository;
+use App\User\Entity\Security\Email;
+use App\User\Entity\Security\EmailResolver;
+use App\User\Service\Authorizer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
@@ -18,9 +21,15 @@ class LoginAction
      */
     private $credentials;
 
-    public function __construct(CredentialsRepository $credentials)
+    /**
+     * @var Authorizer
+     */
+    private $authorizer;
+
+    public function __construct(EmailResolver $credentials, Authorizer $authorizer)
     {
         $this->credentials = $credentials;
+        $this->authorizer = $authorizer;
     }
 
     /**
@@ -34,6 +43,8 @@ class LoginAction
      */
     public function __invoke(LoginRequest $request)
     {
-        return $this->credentials->retrieveByEmail($request->email);
+        $credentials = $this->credentials->retrieveByEmail(new Email($request->email));
+
+        return $this->authorizer->authorize($credentials);
     }
 }

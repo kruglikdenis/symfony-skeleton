@@ -2,7 +2,9 @@
 
 namespace App\User\Entity\Security;
 
+use App\User\Entity\Security\Exception\PasswordNotMatchedException;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -66,5 +68,19 @@ class Credential implements UserInterface
 
     public function eraseCredentials()
     {
+    }
+
+    /**
+     * Validate password
+     *
+     * @param string $password
+     * @param UserPasswordEncoderInterface $encoder
+     * @throws PasswordNotMatchedException
+     */
+    public function validatePassword(string $password, UserPasswordEncoderInterface $encoder): void
+    {
+        if (!$encoder->isPasswordValid($this, $password)) {
+            throw new PasswordNotMatchedException();
+        }
     }
 }

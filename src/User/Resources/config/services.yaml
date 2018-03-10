@@ -7,10 +7,10 @@ services:
         autoconfigure: true
         public: true
 
-    App\User\Entity\Security\CredentialsRepository:
+    App\User\Entity\Security\CredentialRepository:
     App\User\Entity\UserRepository:
     App\User\Service\JwtAuthorizer:
 
     App\User\Service\CredentialsProvider:
         arguments:
-            - '@App\User\Entity\Security\CredentialsRepository'
+            - '@App\User\Entity\Security\CredentialRepository'

@@ -10,6 +10,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Events;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class JwtAuthorizer implements Authorizer
 {
@@ -29,7 +30,7 @@ class JwtAuthorizer implements Authorizer
         $this->dispatcher = $dispatcher;
     }
 
-    public function authorize(Credential $credentials): AuthToken
+    public function authorize(UserInterface $credentials): AuthToken
     {
         $jwt = $this->jwtManager->create($credentials);
 

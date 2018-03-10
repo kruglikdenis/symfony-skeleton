@@ -6,7 +6,7 @@ namespace App\User\Entity\Security;
 use App\Common\Exception\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 
-class CredentialsRepository implements Credentials
+class CredentialRepository implements Credentials
 {
     private $em;
 
@@ -35,7 +35,7 @@ class CredentialsRepository implements Credentials
         $credentials = $qb->getQuery()->getOneOrNullResult();
 
         if (null === $credentials) {
-            throw new EntityNotFoundException('No user with this identity');
+            throw new EntityNotFoundException();
         }
 
         return $credentials;

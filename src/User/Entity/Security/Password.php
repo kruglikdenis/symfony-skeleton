@@ -43,7 +43,7 @@ class Password implements \Serializable
 
     public function salt(): string
     {
-        return (string)$this->salt;
+        return (string) $this->salt;
     }
 
     public function plainPassword(): string

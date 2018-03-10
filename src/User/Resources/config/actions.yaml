@@ -6,6 +6,7 @@ services:
 
     App\User\Http\LoginAction:
         arguments:
-            - '@App\User\Entity\Security\CredentialsRepository'
+            - '@App\User\Entity\Security\CredentialRepository'
+            - '@security.password_encoder'
             - '@App\User\Service\JwtAuthorizer'
         tags: ['controller.service_arguments']

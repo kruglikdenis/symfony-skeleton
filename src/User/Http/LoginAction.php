@@ -11,6 +11,8 @@ use App\User\Entity\Security\Email;
 use App\User\Service\Authorizer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class LoginAction
@@ -21,13 +23,19 @@ class LoginAction
     private $credentials;
 
     /**
+     * @var PasswordEncoderInterface
+     */
+    private $encoder;
+
+    /**
      * @var Authorizer
      */
     private $authorizer;
 
-    public function __construct(Credentials $credentials, Authorizer $authorizer)
+    public function __construct(Credentials $credentials, UserPasswordEncoderInterface $encoder, Authorizer $authorizer)
     {
         $this->credentials = $credentials;
+        $this->encoder = $encoder;
         $this->authorizer = $authorizer;
     }
 
@@ -42,8 +50,9 @@ class LoginAction
      */
     public function __invoke(LoginRequest $request)
     {
-        $credentials = $this->credentials->retrieveByEmail(new Email($request->email));
+        $credential = $this->credentials->retrieveByEmail(new Email($request->email));
+        $credential->validatePassword($request->password, $this->encoder);
 
-        return $this->authorizer->authorize($credentials);
+        return $this->authorizer->authorize($credential);
     }
 }

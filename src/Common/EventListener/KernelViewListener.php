@@ -8,7 +8,6 @@ use App\Common\Annotation\AnnotationResolver;
 use App\Common\Annotation\ResponseCode;
 use App\Common\Annotation\ResponseGroup;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\Serializer\Serializer;

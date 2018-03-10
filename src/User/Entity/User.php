@@ -22,7 +22,7 @@ class User
 
     /**
      * @var FullName
-     * @ORM\Embedded(class="App\User\Entity\FullName")
+     * @ORM\Embedded(class="App\User\Entity\FullName", columnPrefix="false")
      */
     private $fullName;
 

@@ -3,9 +3,9 @@
 namespace App\User\Service;
 
 
-use App\User\Entity\Security\Credential;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 interface Authorizer
 {
-    public function authorize(Credential $credentials);
+    public function authorize(UserInterface $credentials);
 }

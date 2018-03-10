@@ -1,7 +1,7 @@
 security:
 
     encoders:
-        App\User\Entity\Security\Credentials:
+        App\User\Entity\Security\Credential:
             algorithm: bcrypt
 
     role_hierarchy:

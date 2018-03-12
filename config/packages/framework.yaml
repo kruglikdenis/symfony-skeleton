@@ -9,3 +9,4 @@ framework:
         log: true
     validation:
         enabled: true
+    assets: ~

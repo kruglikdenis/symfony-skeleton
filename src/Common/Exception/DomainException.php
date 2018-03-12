@@ -15,4 +15,12 @@ class DomainException extends \Exception
 
         parent::__construct($message, $code, $previous);
     }
+
+    public function getResponseBody(): array
+    {
+        return [
+            'status_code' => $this->getCode(),
+            'message' => $this->getMessage()
+        ];
+    }
 }

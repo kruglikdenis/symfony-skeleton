@@ -4,7 +4,7 @@ namespace App\User\Http;
 
 
 use App\Common\Annotation\ResponseCode;
-use App\Common\Annotation\ResponseGroup;
+use App\Common\Annotation\ResponseGroups;
 use App\User\Entity\Security\Credential;
 use App\User\Entity\Security\Credentials;
 use App\User\Entity\Security\Email;
@@ -42,7 +42,7 @@ class LoginAction
     /**
      * @Route("/login")
      * @Method({"POST"})
-     * @ResponseGroup({"api_login"})
+     * @ResponseGroups({"api_login"})
      * @ResponseCode(200)
      *
      * @param LoginRequest $request

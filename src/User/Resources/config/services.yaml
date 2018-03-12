@@ -10,6 +10,11 @@ services:
     App\User\Entity\Security\CredentialRepository:
     App\User\Entity\UserRepository:
     App\User\Service\JwtAuthorizer:
+    App\User\Service\UserRegisterer:
+        arguments:
+            - '@App\User\Entity\UserRepository'
+            - '@security.encoder_factory'
+            - '@validator'
 
     App\User\Service\CredentialsProvider:
         arguments:

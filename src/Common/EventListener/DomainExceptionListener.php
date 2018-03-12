@@ -16,10 +16,7 @@ class DomainExceptionListener
             return;
         }
 
-        $response = new JsonResponse([
-            'status_code' => $e->getCode(),
-            'message' => $e->getMessage()
-        ], $e->getCode());
+        $response = new JsonResponse($e->getResponseBody(), $e->getCode());
 
         $event->setResponse($response);
     }

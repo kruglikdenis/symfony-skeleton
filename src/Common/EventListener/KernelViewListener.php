@@ -6,7 +6,7 @@ namespace App\Common\EventListener;
 
 use App\Common\Annotation\AnnotationResolver;
 use App\Common\Annotation\ResponseCode;
-use App\Common\Annotation\ResponseGroup;
+use App\Common\Annotation\ResponseGroups;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -62,7 +62,7 @@ class KernelViewListener
 
         $code = $this->annotationResolver->resolve($request, ResponseCode::class) ?? 200;
         $context = [
-            'groups' => $this->annotationResolver->resolve($request, ResponseGroup::class)
+            'groups' => $this->annotationResolver->resolve($request, ResponseGroups::class)
         ];
         $data = $this->normalize($result, $format, $context);
         $event->setResponse(

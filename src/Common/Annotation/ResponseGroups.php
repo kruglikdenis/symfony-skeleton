@@ -7,13 +7,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
- * Annotation class for @ResponseGroup().
+ * Annotation class for @ResponseGroups().
  *
  * @Annotation
  * @Target({"METHOD"})
  *
  */
-class ResponseGroup extends Groups implements HttpAnnotation
+class ResponseGroups extends Groups implements HttpAnnotation
 {
     /**
      * {@inheritdoc}

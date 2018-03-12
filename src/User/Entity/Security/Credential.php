@@ -4,12 +4,17 @@ namespace App\User\Entity\Security;
 
 use App\User\Entity\Security\Exception\PasswordNotMatchedException;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="credentials")
+ * @Assert\UniqueEntity(
+ *     fields={"email.email"},
+ *     errorPath="email"
+ * )
  */
 class Credential implements UserInterface
 {

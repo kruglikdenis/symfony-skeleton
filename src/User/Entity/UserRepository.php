@@ -5,7 +5,7 @@ namespace App\User\Entity;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-class UserRepository
+class UserRepository implements Users
 {
     private $em;
 
@@ -14,7 +14,10 @@ class UserRepository
         $this->em = $em;
     }
 
-    public function add(User $user)
+    /**
+     * {@inheritdoc}
+     */
+    public function add(User $user): void
     {
         $this->em->persist($user);
     }

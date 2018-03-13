@@ -4,7 +4,7 @@ namespace App\Mail;
 
 use App\Mail\Event\MailSender;
 use App\Mail\Event\Message;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Bundle\TwigBundle\TwigEngine;
 
 class Messenger implements MailSender
 {
@@ -14,7 +14,7 @@ class Messenger implements MailSender
     private $mailer;
 
     /**
-     * @var EngineInterface
+     * @var TwigEngine
      */
     private $renderer;
 
@@ -23,14 +23,17 @@ class Messenger implements MailSender
      */
     private $from;
 
-    public function __construct(\Swift_Mailer $mailer, EngineInterface $renderer, string $from)
+    public function __construct(\Swift_Mailer $mailer, TwigEngine $renderer, string $from)
     {
         $this->mailer = $mailer;
         $this->renderer = $renderer;
         $this->from = $from;
     }
 
-    public function send(Message $email)
+    /**
+     * {@inheritdoc}
+     */
+    public function send(Message $email): void
     {
         $message = (new \Swift_Message($email->subject()))
             ->setFrom($this->from)
@@ -39,6 +42,7 @@ class Messenger implements MailSender
                 $email->template(),
                 $email->data()
             ));
-        // TODO: Implement send() method.
+
+        $this->mailer->send($message);
     }
 }

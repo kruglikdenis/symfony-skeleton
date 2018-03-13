@@ -4,8 +4,3 @@ api_users:
     prefix: /api
     defaults:
         _format: json
-
-api_doc:
-    path: /api/doc
-    methods: GET
-    defaults: { _controller: Nelmio\ApiDocBundle\Controller\SwaggerUiController }

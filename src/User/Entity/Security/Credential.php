@@ -51,6 +51,14 @@ class Credential implements UserInterface
         $this->roles = $roles;
     }
 
+    /**
+     * @return Email
+     */
+    public function email(): Email
+    {
+        return $this->email;
+    }
+
     public function getRoles(): array
     {
         return $this->roles;

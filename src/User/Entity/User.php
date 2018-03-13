@@ -4,6 +4,7 @@ namespace App\User\Entity;
 
 use App\Common\Exception\ValidationException;
 use App\User\Entity\Security\Credential;
+use App\User\Entity\Security\Email;
 use App\User\Event\UserWasCreated;
 use BornFree\TacticianDomainEvent\Recorder\ContainsRecordedEvents;
 use BornFree\TacticianDomainEvent\Recorder\EventRecorderCapabilities;
@@ -20,13 +21,14 @@ class User implements ContainsRecordedEvents
 {
     use EventRecorderCapabilities;
 
-    const ROLE_USER = 'ROLE_USER';
+    public const ROLE_USER = 'ROLE_USER';
 
     /**
      * @ORM\Id
      * @ORM\Column(type="guid")
      */
     private $id;
+
 
     /**
      * @var FullName
@@ -47,12 +49,17 @@ class User implements ContainsRecordedEvents
         $this->fullName = $builder->fullName();
         $this->credential = new Credential($this->id, $builder->email(), $builder->password(), $this->roles());
 
-        $this->record(new UserWasCreated());
+        $this->record(new UserWasCreated($this));
     }
 
     public static function builder(): UserBuilder
     {
         return new UserBuilder();
+    }
+
+    public function email(): Email
+    {
+        return $this->credential->email();
     }
 
     public function roles(): array

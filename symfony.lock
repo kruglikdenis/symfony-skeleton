@@ -1,4 +1,13 @@
 {
+    "bornfree/tactician-doctrine-domain-events": {
+        "version": "0.4.0"
+    },
+    "bornfreee/tactician-domain-events": {
+        "version": "0.3.1"
+    },
+    "bornfreee/tactician-domain-events-bundle": {
+        "version": "0.5.3"
+    },
     "composer/semver": {
         "version": "1.4.2"
     },
@@ -91,6 +100,9 @@
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "league/tactician": {
+        "version": "v1.0.3"
     },
     "lexik/jwt-authentication-bundle": {
         "version": "2.3",

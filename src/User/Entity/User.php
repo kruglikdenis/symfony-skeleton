@@ -4,6 +4,9 @@ namespace App\User\Entity;
 
 use App\Common\Exception\ValidationException;
 use App\User\Entity\Security\Credential;
+use App\User\Event\UserWasCreated;
+use BornFree\TacticianDomainEvent\Recorder\ContainsRecordedEvents;
+use BornFree\TacticianDomainEvent\Recorder\EventRecorderCapabilities;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -13,8 +16,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @ORM\Entity
  * @ORM\Table(name="users")
  */
-class User
+class User implements ContainsRecordedEvents
 {
+    use EventRecorderCapabilities;
+
     const ROLE_USER = 'ROLE_USER';
 
     /**
@@ -41,6 +46,8 @@ class User
         $this->id = Uuid::uuid4();
         $this->fullName = $builder->fullName();
         $this->credential = new Credential($this->id, $builder->email(), $builder->password(), $this->roles());
+
+        $this->record(new UserWasCreated());
     }
 
     public static function builder(): UserBuilder

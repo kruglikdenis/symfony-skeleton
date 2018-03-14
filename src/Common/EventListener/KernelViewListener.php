@@ -64,46 +64,10 @@ class KernelViewListener
         $context = [
             'groups' => $this->annotationResolver->resolve($request, ResponseGroups::class)
         ];
-        $data = $this->normalize($result, $format, $context);
+        $data = $this->serializer->normalize($result, $format, $context);
         $event->setResponse(
             new Response($this->serializer->serialize($data, $format, $context), $code)
         );
-    }
-
-
-    private function normalize($data, string $format, array $context = [])
-    {
-        if (is_iterable($data)) {
-            if ($data instanceof \Traversable) {
-                $data = iterator_to_array($data);
-            }
-
-            $bad = array_filter($data, function ($item) use ($format) {
-                if (!is_object($item)) {
-                    return true;
-                }
-
-                if (!$this->serializer->supportsNormalization($item, $format)) {
-                    return true;
-                }
-
-                return false;
-            });
-
-            if (!count($bad)) {
-                $data = array_map(function ($item) use ($format, $context) {
-                    return $this->serializer->normalize($item, $format, $context);
-                }, $data);
-            }
-
-            return $data;
-        }
-
-        if (is_object($data) && $this->serializer->supportsNormalization($data, $format)) {
-            return $this->serializer->normalize($data, $format, $context);
-        }
-
-        return $data;
     }
 
     /**

@@ -34,3 +34,6 @@ services:
 
     App\Common\Normalizer\UuidNormalizer:
         tags: [ serializer.normalizer ]
+
+    App\Common\Normalizer\CollectionNormalizer:
+        tags: [ serializer.normalizer ]

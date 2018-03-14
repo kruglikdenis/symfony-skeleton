@@ -1,9 +1,8 @@
 <?php
 
-namespace App\User\Event;
+namespace App\User\Entity;
 
 
-use App\User\Entity\User;
 
 class UserWasCreated
 {

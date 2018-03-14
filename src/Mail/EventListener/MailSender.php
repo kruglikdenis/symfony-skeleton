@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail\Event;
+namespace App\Mail\EventListener;
 
 interface MailSender
 {

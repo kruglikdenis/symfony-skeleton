@@ -31,3 +31,6 @@ services:
     App\Common\EventListener\DomainExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }
+
+    App\Common\Normalizer\UuidNormalizer:
+        tags: [ serializer.normalizer ]

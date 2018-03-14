@@ -13,3 +13,13 @@ services:
         autowire: true
         autoconfigure: true
         public: false
+
+    Symfony\Component\Serializer\Normalizer\PropertyNormalizer:
+        arguments:
+            - "@serializer.mapping.class_metadata_factory"
+            - "@serializer.name_converter.camel_case_to_snake_case"
+            - "@property_info.reflection_extractor"
+        tags: [ serializer.normalizer ]
+#
+#    Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer:
+#            tags: [ serializer.normalizer ]

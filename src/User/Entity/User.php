@@ -5,11 +5,11 @@ namespace App\User\Entity;
 use App\Common\Exception\ValidationException;
 use App\User\Entity\Security\Credential;
 use App\User\Entity\Security\Email;
-use App\User\Event\UserWasCreated;
 use BornFree\TacticianDomainEvent\Recorder\ContainsRecordedEvents;
 use BornFree\TacticianDomainEvent\Recorder\EventRecorderCapabilities;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
@@ -24,8 +24,11 @@ class User implements ContainsRecordedEvents
     public const ROLE_USER = 'ROLE_USER';
 
     /**
+     * @var string
      * @ORM\Id
      * @ORM\Column(type="guid")
+     *
+     * @Groups({"api_user_register"})
      */
     private $id;
 
@@ -33,6 +36,8 @@ class User implements ContainsRecordedEvents
     /**
      * @var FullName
      * @ORM\Embedded(class="App\User\Entity\FullName", columnPrefix=false)
+     *
+     * @Groups({"api_user_register"})
      */
     private $fullName;
 

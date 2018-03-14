@@ -95,10 +95,12 @@ class KernelViewListener
                     return $this->serializer->normalize($item, $format, $context);
                 }, $data);
             }
+
+            return $data;
         }
 
-        if (is_object($data) && !$this->serializer->supportsNormalization($data, $format)) {
-            return null;
+        if (is_object($data) && $this->serializer->supportsNormalization($data, $format)) {
+            return $this->serializer->normalize($data, $format, $context);
         }
 
         return $data;

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Mail\Event;
+namespace App\Mail\EventListener;
 
-use App\User\Event\UserWasCreated;
+
+use App\User\Entity\UserWasCreated;
 
 class SendEmailAfterUserIsCreatedListener
 {

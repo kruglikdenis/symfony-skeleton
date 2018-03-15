@@ -3,12 +3,14 @@
 namespace App\Common\Http;
 
 use Fesor\RequestObject\ErrorResponseProvider;
+use Fesor\RequestObject\PayloadResolver;
 use Fesor\RequestObject\RequestObject as BaseRequestObject;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
-abstract class RequestObject extends BaseRequestObject implements ErrorResponseProvider
+abstract class RequestObject extends BaseRequestObject implements ErrorResponseProvider, PayloadResolver
 {
     public function getErrorResponse(ConstraintViolationListInterface $errors)
     {
@@ -25,5 +27,22 @@ abstract class RequestObject extends BaseRequestObject implements ErrorResponseP
             ],
             422
         );
+    }
+
+    /**
+     * Map request parameters to request object
+     *
+     * @param Request $request
+     */
+    public function map(Request $request): void
+    {
+
+    }
+
+    public function resolvePayload(Request $request)
+    {
+        $this->map($request);
+
+        return $request->request->all();
     }
 }

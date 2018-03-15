@@ -4,11 +4,10 @@ namespace App\User\Http;
 
 
 use App\Common\Http\RequestObject;
-use Fesor\RequestObject\PayloadResolver;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class RegisterRequest extends RequestObject implements PayloadResolver
+class RegisterRequest extends RequestObject
 {
     public $email;
 
@@ -31,14 +30,15 @@ class RegisterRequest extends RequestObject implements PayloadResolver
         ]);
     }
 
-    public function resolvePayload(Request $request)
+    /**
+     * @inheritdoc
+     */
+    public function map(Request $request): void
     {
         $this->email = $request->get('email');
         $this->password = $request->get('password');
         $this->firstName = $request->get('first_name');
         $this->lastName = $request->get('last_name');
         $this->middleName = $request->get('middle_name');
-
-        return $request->request->all();
     }
 }

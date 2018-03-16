@@ -43,6 +43,20 @@ abstract class RequestObject extends BaseRequestObject implements ErrorResponseP
     {
         $this->map($request);
 
-        return $request->request->all();
+        return $this->shouldNotHasRequestBody($request->getMethod())
+            ? $request->query->all()
+            : array_merge(
+                $request->request->all(),
+                $request->files->all()
+            );
+    }
+
+    /**
+     * @param $methodName
+     * @return bool
+     */
+    private function shouldNotHasRequestBody($methodName)
+    {
+        return in_array($methodName, ['GET', 'HEAD', 'DELETE'], true);
     }
 }

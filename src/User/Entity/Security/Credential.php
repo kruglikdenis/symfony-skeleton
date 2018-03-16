@@ -4,6 +4,7 @@ namespace App\User\Entity\Security;
 
 use App\User\Entity\Security\Exception\PasswordNotMatchedException;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 use Symfony\Bridge\Doctrine\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -43,7 +44,7 @@ class Credential implements UserInterface
     private $roles;
 
 
-    public function __construct(string $id, Email $email, Password $password, array $roles)
+    public function __construct(Uuid $id, Email $email, Password $password, array $roles)
     {
         $this->id = $id;
         $this->email = $email;

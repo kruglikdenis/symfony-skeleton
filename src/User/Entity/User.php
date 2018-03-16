@@ -24,7 +24,7 @@ class User implements ContainsRecordedEvents
     public const ROLE_USER = 'ROLE_USER';
 
     /**
-     * @var string
+     * @var Uuid
      * @ORM\Id
      * @ORM\Column(type="guid")
      *

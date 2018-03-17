@@ -6,7 +6,7 @@ services:
         public: false
 
     request_annotation_resolver:
-        class: 'App\Common\Annotation\HttpAnnotationResolver'
+        class: 'App\Common\Http\Annotation\HttpAnnotationResolver'
         public: true
         arguments:
             - '@controller_resolver'

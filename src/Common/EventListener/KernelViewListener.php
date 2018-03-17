@@ -4,9 +4,9 @@
 namespace App\Common\EventListener;
 
 
-use App\Common\Annotation\AnnotationResolver;
-use App\Common\Annotation\ResponseCode;
-use App\Common\Annotation\ResponseGroups;
+use App\Common\Http\Annotation\AnnotationResolver;
+use App\Common\Http\Annotation\ResponseCode;
+use App\Common\Http\Annotation\ResponseGroups;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;

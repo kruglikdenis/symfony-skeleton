@@ -3,8 +3,8 @@
 namespace App\User\Http;
 
 
-use App\Common\Annotation\ResponseCode;
-use App\Common\Annotation\ResponseGroups;
+use App\Common\Http\Annotation\ResponseCode;
+use App\Common\Http\Annotation\ResponseGroups;
 use App\User\Entity\Security\Credential;
 use App\User\Entity\Security\Credentials;
 use App\User\Entity\Security\Email;

@@ -3,23 +3,24 @@
 namespace App\Mail\EventListener;
 
 
+use App\Mail\Sender;
 use App\User\Entity\UserWasCreated;
 
 class SendEmailAfterUserIsCreatedListener
 {
     /**
-     * @var MailSender
+     * @var Sender
      */
     private $sender;
 
-    public function __construct(MailSender $sender)
+    public function __construct(MailSenderAdapter $sender)
     {
         $this->sender = $sender;
     }
 
     public function __invoke(UserWasCreated $event)
     {
-        $message = UserWasCreatedMessage::build($event);
+        $message = UserWasCreatedMessageBuilder::build($event);
 
         $this->sender->send($message);
     }

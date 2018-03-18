@@ -3,9 +3,10 @@
 namespace App\Mail\EventListener;
 
 
+use App\Mail\Mail;
 use App\User\Entity\UserWasCreated;
 
-class UserWasCreatedMessage extends Message
+class UserWasCreatedMessageBuilder
 {
     public const SUBJECT = 'Registration';
 
@@ -15,7 +16,7 @@ class UserWasCreatedMessage extends Message
     {
         $user = $event->user();
 
-        return new self(
+        return new Mail(
            (string) $user->email(),
            static::SUBJECT,
            static::TEMPLATE,

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Mail\EventListener;
+namespace App\Mail;
 
-class Message
+
+class Mail implements Message
 {
     /**
      * @var string
@@ -38,32 +39,13 @@ class Message
         $this->data = $data;
     }
 
-    /**
-     * @return string
-     */
-    public function template(): string
+    public function send(Mailer $mailer): void
     {
-        return $this->template;
-    }
+        $template = (new \Swift_Message($this->subject))
+            ->setFrom($mailer->from())
+            ->setTo($this->sendTo)
+            ->setBody($mailer->render($this->template, $this->data));
 
-    public function sendTo()
-    {
-        return $this->sendTo;
-    }
-
-    /**
-     * @return string
-     */
-    public function subject(): string
-    {
-        return $this->subject;
-    }
-
-    /**
-     * @return mixed|null
-     */
-    public function data()
-    {
-        return $this->data;
+        $mailer->send($template);
     }
 }

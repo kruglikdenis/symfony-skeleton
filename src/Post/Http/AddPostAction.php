@@ -3,10 +3,18 @@
 namespace App\Post\Http;
 
 
+use App\Core\Http\Annotation\ResponseCode;
+use App\Core\Http\Annotation\ResponseGroups;
 use App\Post\Entity\Post;
 use App\Post\Entity\Posts;
 use App\Post\Entity\TagExtractor;
+use App\Security\Entity\Credential;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * @Route("/posts")
+ */
 class AddPostAction
 {
     /**
@@ -25,11 +33,20 @@ class AddPostAction
         $this->tagExtractor = $tagExtractor;
     }
 
-    public function __invoke(AddPostRequest $request)
+    /**
+     * @Method({"POST"})
+     * @ResponseGroups({"api_post_create"})
+     * @ResponseCode(201)
+     *
+     * @param AddPostRequest $request
+     * @param Credential $credential
+     *
+     * @return Post
+     */
+    public function __invoke(AddPostRequest $request, Credential $credential)
     {
         $post = Post::builder()
-            ->setAuthor($request->author)
-            ->setMedia($request->media)
+            ->setAuthor($credential->id())
             ->setDescription($request->description, $this->tagExtractor)
             ->build();
 

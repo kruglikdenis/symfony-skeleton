@@ -4,9 +4,10 @@ parameters:
     locale: 'en'
 
 imports:
-    - { resource: ./../src/Common/Resources/config/services.yaml }
+    - { resource: ./../src/Core/Resources/config/services.yaml }
     - { resource: ./../src/Security/Resources/config/services.yaml }
     - { resource: ./../src/User/Resources/config/services.yaml }
+    - { resource: ./../src/Post/Resources/config/services.yaml }
 
 services:
     # default configuration for services in *this* file
@@ -15,9 +16,9 @@ services:
         autoconfigure: true
         public: false
 
+    Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface: '@serializer.mapping.class_metadata_factory'
+    Symfony\Component\Serializer\NameConverter\NameConverterInterface: '@serializer.name_converter.camel_case_to_snake_case'
+    Symfony\Component\PropertyInfo\PropertyTypeExtractorInterface: '@property_info.reflection_extractor'
+
     Symfony\Component\Serializer\Normalizer\PropertyNormalizer:
-        arguments:
-            - "@serializer.mapping.class_metadata_factory"
-            - "@serializer.name_converter.camel_case_to_snake_case"
-            - "@property_info.reflection_extractor"
         tags: [ serializer.normalizer ]

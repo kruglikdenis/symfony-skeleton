@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Exception;
+namespace App\Core\Exception;
 
 
 class InvalidArgumentException extends DomainException

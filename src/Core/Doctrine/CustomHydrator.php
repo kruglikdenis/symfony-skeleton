@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Doctrine;
+namespace App\Core\Doctrine;
 
 
 abstract class CustomHydrator

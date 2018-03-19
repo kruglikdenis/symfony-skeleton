@@ -11,7 +11,7 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         api_provider:
-            id: App\Security\Service\CredentialsProvider
+            id: App\Security\CredentialsProvider
 
     firewalls:
         dev:

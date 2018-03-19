@@ -4,6 +4,7 @@ namespace App\Post\Entity;
 
 
 use App\Upload\FileReference;
+use Ramsey\Uuid\Uuid;
 
 class PostBuilder
 {
@@ -41,32 +42,36 @@ class PostBuilder
      * @param string $description
      * @param TagExtractor $tagExtractor
      *
-     * @return $this
+     * @return PostBuilder
      */
-    public function setDescription(string $description, TagExtractor $tagExtractor)
+    public function setDescription(string $description, TagExtractor $tagExtractor): self
     {
         $this->description = $description;
         $this->tags = $tagExtractor->fromText($description);
 
         return $this;
     }
+
     /**
      * @param FileReference $media
-     * @return $this
+     *
+     * @return PostBuilder
      */
-    public function setMedia(FileReference $media)
+    public function setMedia(FileReference $media): self
     {
         $this->media = $media;
 
         return $this;
     }
+
     /**
-     * @param Author $author
-     * @return $this
+     * @param string $id
+     *
+     * @return PostBuilder
      */
-    public function setAuthor(Author $author)
+    public function setAuthor(string $id): self
     {
-        $this->author = $author;
+        $this->author = new Author($id);
 
         return $this;
     }

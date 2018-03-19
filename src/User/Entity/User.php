@@ -2,7 +2,7 @@
 
 namespace App\User\Entity;
 
-use App\Common\Exception\ValidationException;
+use App\Core\Exception\ValidationException;
 use App\Security\Entity\Credential;
 use App\Security\Entity\Email;
 use BornFree\TacticianDomainEvent\Recorder\ContainsRecordedEvents;

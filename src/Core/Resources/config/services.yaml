@@ -6,21 +6,21 @@ services:
         public: false
 
     request_annotation_resolver:
-        class: 'App\Common\Http\Annotation\HttpAnnotationResolver'
+        class: 'App\Core\Http\Annotation\HttpAnnotationResolver'
         public: true
         arguments:
             - '@controller_resolver'
             - '@annotations.reader'
 
-    App\Common\Doctrine\MigrationEventSubscriber:
+    App\Core\Doctrine\MigrationEventSubscriber:
         tags:
             - { name: doctrine.event_subscriber, connection: 'default' }
 
-    App\Common\EventListener\JsonRequestTransformerListener:
+    App\Core\EventListener\JsonRequestTransformerListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
 
-    App\Common\EventListener\KernelViewListener:
+    App\Core\EventListener\KernelViewListener:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@serializer'
@@ -28,12 +28,12 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.view }
 
-    App\Common\EventListener\DomainExceptionListener:
+    App\Core\EventListener\DomainExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }
 
-    App\Common\Normalizer\UuidNormalizer:
+    App\Core\Normalizer\UuidNormalizer:
         tags: [ serializer.normalizer ]
 
-    App\Common\Normalizer\CollectionNormalizer:
+    App\Core\Normalizer\CollectionNormalizer:
         tags: [ serializer.normalizer ]

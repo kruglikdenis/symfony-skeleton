@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Common\EventListener;
+namespace App\Core\EventListener;
 
 
-use App\Common\Http\Annotation\AnnotationResolver;
-use App\Common\Http\Annotation\ResponseCode;
-use App\Common\Http\Annotation\ResponseGroups;
+use App\Core\Http\Annotation\AnnotationResolver;
+use App\Core\Http\Annotation\ResponseCode;
+use App\Core\Http\Annotation\ResponseGroups;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Doctrine;
+namespace App\Core\Doctrine;
 
 use Doctrine\ORM\Internal\Hydration\ArrayHydrator;
 

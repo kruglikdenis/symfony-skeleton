@@ -3,7 +3,7 @@
 namespace App\Security\Entity;
 
 
-use App\Common\Exception\EntityNotFoundException;
+use App\Core\Exception\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 
 class CredentialRepository implements Credentials

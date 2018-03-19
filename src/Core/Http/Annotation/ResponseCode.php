@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Common\Http\Annotation;
+namespace App\Core\Http\Annotation;
 
-use App\Common\Exception\InvalidArgumentException;
+use App\Core\Exception\InvalidArgumentException;
 
 /**
  * Annotation class for @ResponseCode().

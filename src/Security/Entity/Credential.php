@@ -51,6 +51,14 @@ class Credential implements UserInterface
     }
 
     /**
+     * @return string
+     */
+    public function id(): string
+    {
+        return (string) $this->id;
+    }
+
+    /**
      * @return Email
      */
     public function email(): Email

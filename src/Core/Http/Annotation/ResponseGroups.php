@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Http\Annotation;
+namespace App\Core\Http\Annotation;
 
 
 use Symfony\Component\Serializer\Annotation\Groups;

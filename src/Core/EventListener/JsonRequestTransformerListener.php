@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\EventListener;
+namespace App\Core\EventListener;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

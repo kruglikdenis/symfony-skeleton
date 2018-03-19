@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Normalizer;
+namespace App\Core\Normalizer;
 
 
 use Doctrine\Common\Collections\ArrayCollection;

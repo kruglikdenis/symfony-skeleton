@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security\Service;
+namespace App\Security;
 
 use App\Security\Entity\Credential;
 use App\Security\Entity\Credentials;

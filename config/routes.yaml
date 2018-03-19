@@ -5,5 +5,12 @@ api_users:
     defaults:
         _format: json
 
+api_posts:
+    resource: ../src/Post/Http/
+    type: annotation
+    prefix: /api
+    defaults:
+        _format: json
+
 api_login:
     path: /api/login

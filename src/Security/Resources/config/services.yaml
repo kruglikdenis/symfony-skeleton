@@ -4,8 +4,11 @@ services:
         autoconfigure: true
         public: true
 
-    App\Security\Entity\CredentialRepository:
+    App\Security\Entity\Credentials: '@App\Security\Entity\CredentialRepository'
 
-    App\Security\Service\CredentialsProvider:
-        arguments:
-            - '@App\Security\Entity\CredentialRepository'
+    App\Security\Entity\CredentialRepository:
+    App\Security\CredentialsProvider:
+    App\Security\CredentialValueResolver:
+        tags:
+            - { name: controller.argument_value_resolver, priority: 1000 }
+

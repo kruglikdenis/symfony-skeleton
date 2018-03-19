@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Exception;
+namespace App\Core\Exception;
 
 
 use Symfony\Component\Validator\ConstraintViolation;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Normalizer;
+namespace App\Core\Normalizer;
 
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

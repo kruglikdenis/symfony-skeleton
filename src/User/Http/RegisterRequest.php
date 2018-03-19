@@ -3,7 +3,7 @@
 namespace App\User\Http;
 
 
-use App\Common\Http\RequestObject;
+use App\Core\Http\RequestObject;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 

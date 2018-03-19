@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Http;
+namespace App\Core\Http;
 
 use Fesor\RequestObject\ErrorResponseProvider;
 use Fesor\RequestObject\PayloadResolver;

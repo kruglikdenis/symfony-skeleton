@@ -1,12 +1,10 @@
 <?php
 
-namespace App\User\Entity\Security;
+namespace App\Security\Entity;
 
-use App\User\Entity\Security\Exception\PasswordNotMatchedException;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bridge\Doctrine\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -14,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="credentials")
  * @Assert\UniqueEntity(
  *     fields={"email.email"},
- *     errorPath="email"
+ *     errorPath="[email]"
  * )
  */
 class Credential implements UserInterface
@@ -27,13 +25,13 @@ class Credential implements UserInterface
 
     /**
      * @var string
-     * @ORM\Embedded(class="App\User\Entity\Security\Email", columnPrefix=false)
+     * @ORM\Embedded(class="App\Security\Entity\Email", columnPrefix=false)
      */
     private $email;
 
     /**
      * @var Password
-     * @ORM\Embedded(class="App\User\Entity\Security\Password", columnPrefix=false)
+     * @ORM\Embedded(class="App\Security\Entity\Password", columnPrefix=false)
      */
     private $password;
 
@@ -82,19 +80,5 @@ class Credential implements UserInterface
 
     public function eraseCredentials()
     {
-    }
-
-    /**
-     * Validate password
-     *
-     * @param string $password
-     * @param UserPasswordEncoderInterface $encoder
-     * @throws PasswordNotMatchedException
-     */
-    public function validatePassword(string $password, UserPasswordEncoderInterface $encoder): void
-    {
-        if (!$encoder->isPasswordValid($this, $password)) {
-            throw new PasswordNotMatchedException();
-        }
     }
 }

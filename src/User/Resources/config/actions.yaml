@@ -4,12 +4,5 @@ services:
         autoconfigure: true
         public: false
 
-    App\User\Http\LoginAction:
-        arguments:
-            - '@App\User\Entity\Security\CredentialRepository'
-            - '@security.password_encoder'
-            - '@App\User\Service\JwtAuthorizer'
-        tags: ['controller.service_arguments']
-
     App\User\Http\RegisterAction:
         tags: ['controller.service_arguments']

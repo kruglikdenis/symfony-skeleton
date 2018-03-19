@@ -4,3 +4,6 @@ api_users:
     prefix: /api
     defaults:
         _format: json
+
+api_login:
+    path: /api/login

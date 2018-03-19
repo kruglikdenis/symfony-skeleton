@@ -1,10 +1,10 @@
 <?php
 
-namespace App\User\Service;
+namespace App\Security\Service;
 
-use App\User\Entity\Security\Credential;
-use App\User\Entity\Security\Credentials;
-use App\User\Entity\Security\Email;
+use App\Security\Entity\Credential;
+use App\Security\Entity\Credentials;
+use App\Security\Entity\Email;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\User\Entity\Security;
+namespace App\Security\Entity;
 
 
 interface Credentials

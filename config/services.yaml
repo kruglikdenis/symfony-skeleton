@@ -5,6 +5,7 @@ parameters:
 
 imports:
     - { resource: ./../src/Common/Resources/config/services.yaml }
+    - { resource: ./../src/Security/Resources/config/services.yaml }
     - { resource: ./../src/User/Resources/config/services.yaml }
 
 services:
@@ -20,6 +21,3 @@ services:
             - "@serializer.name_converter.camel_case_to_snake_case"
             - "@property_info.reflection_extractor"
         tags: [ serializer.normalizer ]
-#
-#    Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer:
-#            tags: [ serializer.normalizer ]

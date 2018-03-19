@@ -1,6 +1,0 @@
-api_user:
-    resource: ../../src/User/Http/
-    type: annotation
-    prefix: /api
-    defaults:
-        _format: json

@@ -24,3 +24,7 @@ doctrine:
                 type: annotation
                 dir: '%kernel.project_dir%/src/User/Entity'
                 prefix: 'App\User\Entity'
+            security:
+                type: annotation
+                dir: '%kernel.project_dir%/src/Security/Entity'
+                prefix: 'App\Security\Entity'

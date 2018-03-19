@@ -3,8 +3,8 @@
 namespace App\User\Entity;
 
 use App\Common\Exception\ValidationException;
-use App\User\Entity\Security\Credential;
-use App\User\Entity\Security\Email;
+use App\Security\Entity\Credential;
+use App\Security\Entity\Email;
 use BornFree\TacticianDomainEvent\Recorder\ContainsRecordedEvents;
 use BornFree\TacticianDomainEvent\Recorder\EventRecorderCapabilities;
 use Doctrine\ORM\Mapping as ORM;
@@ -43,7 +43,7 @@ class User implements ContainsRecordedEvents
 
     /**
      * @var Credential
-     * @ORM\OneToOne(targetEntity="App\User\Entity\Security\Credential", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Security\Entity\Credential", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $credential;

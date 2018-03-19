@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\Security\Entity\CredentialRepository:
+
+    App\Security\Service\CredentialsProvider:
+        arguments:
+            - '@App\Security\Entity\CredentialRepository'

@@ -3,9 +3,9 @@
 namespace App\User\Entity;
 
 
-use App\User\Entity\Security\Credential;
-use App\User\Entity\Security\Email;
-use App\User\Entity\Security\Password;
+use App\Security\Entity\Credential;
+use App\Security\Entity\Email;
+use App\Security\Entity\Password;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class UserBuilder

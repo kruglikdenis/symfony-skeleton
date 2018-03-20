@@ -17,7 +17,8 @@ RUN yes | pecl install apcu xdebug-beta \
         && echo ";zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini \
         && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
         && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_connect_back=on" >> /usr/local/etc/php/conf.d/xdebug.ini
+        && echo "xdebug.remote_connect_back=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
+        && echo "xdebug.remote_host=$(ip route|awk '/default/ { print $3 }')" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 WORKDIR /app
 

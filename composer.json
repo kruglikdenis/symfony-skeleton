@@ -34,11 +34,15 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
+        "behat/behat": "^3.4",
+        "behat/symfony2-extension": "^2.1",
+        "behatch/contexts": "^3.1",
         "friendsofphp/php-cs-fixer": "~2.0",
-        "phpunit/phpunit": "^5.6",
-        "symfony/phpunit-bridge": "^3.0",
         "fzaninotto/faker": "^1.7",
-        "symfony/dotenv": "^4.0"
+        "phpspec/phpspec": "^4.3",
+        "phpunit/phpunit": "^5.6",
+        "symfony/dotenv": "^4.0",
+        "symfony/phpunit-bridge": "^3.0"
     },
     "replace": {
         "symfony/polyfill-apcu": "*",

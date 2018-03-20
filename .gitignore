@@ -22,3 +22,7 @@ docker/keys/*
 .idea
 .DS_Store
 .env
+
+###> behat/symfony2-extension ###
+behat.yml
+###< behat/symfony2-extension ###

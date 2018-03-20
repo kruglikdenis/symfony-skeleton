@@ -15,5 +15,6 @@ return [
     Fesor\RequestObject\Bundle\RequestObjectBundle::class => ['all' => true],
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
     Nelmio\ApiDocBundle\NelmioApiDocBundle::class => ['all' => true],
-    BornFree\TacticianDomainEventBundle\TacticianDomainEventBundle::class => ['all' => true]
+    BornFree\TacticianDomainEventBundle\TacticianDomainEventBundle::class => ['all' => true],
+    Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
 ];

@@ -1,7 +1,7 @@
 FROM php:7.2-fpm
 
 RUN apt-get update \
-    && apt-get install -y libpq-dev libgmp-dev git zip \
+    && apt-get install -y libpq-dev libgmp-dev git zip iproute2 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install \
@@ -26,6 +26,9 @@ RUN curl --silent --show-error https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin/ --filename=composer && \
     composer global require hirak/prestissimo && \
     composer clear-cache
+
+RUN curl -LsS https://codeception.com/codecept.phar -o /usr/local/bin/codecept \
+    && chmod a+x /usr/local/bin/codecept
 
 COPY docker/php/config/www.conf /usr/local/etc/php-fpm.d/www.conf
 CMD ["php-fpm", "--allow-to-run-as-root"]

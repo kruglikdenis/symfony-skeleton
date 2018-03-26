@@ -13,7 +13,7 @@ api_posts:
         _format: json
 
 api_upload:
-    resource: ../src/Upload
+    resource: ../src/Upload/Http/
     type: annotation
     prefix: /api
     defaults:

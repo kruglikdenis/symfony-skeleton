@@ -4,5 +4,5 @@ services:
         autoconfigure: true
         public: false
 
-    App\Upload\UploadFileAction:
+    App\Upload\Http\UploadFileAction:
         tags: ['controller.service_arguments']

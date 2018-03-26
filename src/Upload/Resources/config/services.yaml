@@ -7,4 +7,5 @@ services:
         autoconfigure: true
         public: true
 
-    App\Upload\FileUploader:
+    League\Flysystem\AdapterInterface: "@oneup_flysystem.local_adapter_adapter"
+    League\Flysystem\Filesystem:

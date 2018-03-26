@@ -17,6 +17,7 @@
         "gpslab/domain-event-bundle": "^2.1",
         "lexik/jwt-authentication-bundle": "^2.4",
         "nelmio/api-doc-bundle": "^3.1",
+        "oneup/flysystem-bundle": "^3.0",
         "pascaldevink/shortuuid": "^2.0",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "^4.0",

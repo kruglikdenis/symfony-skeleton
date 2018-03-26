@@ -1,0 +1,14 @@
+oneup_flysystem:
+    adapters:
+        local_adapter:
+            local:
+                directory: "%kernel.root_dir%/../var/uploads"
+                lazy: ~
+                writeFlags: ~
+                linkHandling: ~
+                permissions: ~
+
+    filesystems:
+        local:
+            adapter: local_adapter
+            alias: local

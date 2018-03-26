@@ -137,6 +137,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "league/flysystem": {
+        "version": "1.0.43"
+    },
     "league/tactician": {
         "version": "v1.0.3"
     },
@@ -175,6 +178,15 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
+    },
+    "oneup/flysystem-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "0eb87bba411c227da027fe5f7c1dc7954b02f242"
+        }
     },
     "paragonie/random_compat": {
         "version": "v2.0.11"

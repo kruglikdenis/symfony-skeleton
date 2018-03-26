@@ -12,5 +12,12 @@ api_posts:
     defaults:
         _format: json
 
+api_upload:
+    resource: ../src/Upload
+    type: annotation
+    prefix: /api
+    defaults:
+        _format: json
+
 api_login:
     path: /api/login

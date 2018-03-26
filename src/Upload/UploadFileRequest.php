@@ -5,21 +5,35 @@ namespace App\Upload;
 
 use App\Core\Http\RequestObject;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\ConstraintViolationListInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 class UploadFileRequest extends RequestObject
 {
-    private $file;
+    /**
+     * @var File
+     */
+    public $file;
 
-    public function resolvePayload(Request $request)
+    private $rules = [];
+
+    public function rules()
     {
-
-
-        return parent::resolvePayload($request);
+        return new Assert\Collection([
+            'file' => array_merge([
+                new Assert\NotBlank() ],
+                $this->rules
+            )
+        ]);
     }
 
-    public function getErrorResponse(ConstraintViolationListInterface $errors)
+    public function map(Request $request): void
     {
-        return parent::getErrorResponse($errors);
+        $uploadedFile = $request->files->get('file');
+
+        if ($uploadedFile) {
+            $this->file = new File($uploadedFile);
+            $this->rules = [ $this->file->validationRule() ];
+        }
     }
 }

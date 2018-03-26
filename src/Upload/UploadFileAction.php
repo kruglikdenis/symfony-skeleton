@@ -3,6 +3,12 @@
 namespace App\Upload;
 
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
+/**
+ * @Route("/files")
+ */
 class UploadFileAction
 {
     /**
@@ -15,8 +21,14 @@ class UploadFileAction
         $this->uploader = $uploader;
     }
 
-    public function __invoke()
+    /**
+     * @Method({"POST"})
+     * @Route("/upload")
+     *
+     * @param UploadFileRequest $request
+     */
+    public function __invoke(UploadFileRequest $request)
     {
-        // TODO: Implement __invoke() method.
+        $i = 0;
     }
 }

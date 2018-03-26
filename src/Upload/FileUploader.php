@@ -5,7 +5,14 @@ namespace App\Upload;
 
 use Symfony\Component\HttpFoundation\File\File;
 
-interface FileUploader
+class FileUploader
 {
-    public function upload(File $file);
+
+    /**
+     * @inheritdoc
+     */
+    public function upload(File $file)
+    {
+
+    }
 }

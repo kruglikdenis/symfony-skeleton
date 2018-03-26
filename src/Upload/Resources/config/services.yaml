@@ -1,0 +1,10 @@
+imports:
+    - { resource: ./actions.yaml }
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\Upload\FileUploader:

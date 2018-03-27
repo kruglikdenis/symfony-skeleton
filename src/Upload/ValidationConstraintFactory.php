@@ -9,26 +9,37 @@ use Symfony\Component\Validator\Constraint;
 class ValidationConstraintFactory
 {
     /**
+     * @var FileConstraint[]
+     */
+    private $supportedTypes;
+
+    /**
      * Build file
      *
      * @param UploadedFile $file
      * @return Constraint
      */
-    public static function create(UploadedFile $file): Constraint
+    public function create(UploadedFile $file): ?Constraint
     {
-        foreach (static::supportedTypes() as $type) {
-            if ($type::support($file)) {
-                return $type::validationRule();
+        foreach ($this->supportedTypes as $type) {
+            if ($type->support($file)) {
+                return $type->rule();
             }
         }
 
-        return File::validationRule();
+        return null;
     }
 
-    private static function supportedTypes(): array
+    /**
+     * Add validation rule
+     *
+     * @param FileConstraint $constraint
+     * @return ValidationConstraintFactory
+     */
+    public function add(FileConstraint $constraint): self
     {
-        return [
-            Image::class
-        ];
+        $this->supportedTypes[] = $constraint;
+
+        return $this;
     }
 }

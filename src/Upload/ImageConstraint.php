@@ -7,17 +7,15 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class Image extends File
+final class ImageConstraint implements FileConstraint
 {
-    public const UPLOAD_PATH = 'images';
-
     public const MIME_TYPES = [
         'image/jpeg',
         'image/jpg',
         'image/png'
     ];
 
-    public static function validationRule(): Constraint
+    public function rule(): Constraint
     {
         return new Assert\Image([
             'maxSize' => '10M',
@@ -28,7 +26,7 @@ class Image extends File
         ]);
     }
 
-    public static function support(UploadedFile $file): bool
+    public function support(UploadedFile $file): bool
     {
         return in_array($file->getMimeType(), static::MIME_TYPES);
     }

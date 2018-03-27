@@ -8,4 +8,4 @@ services:
         public: true
 
     League\Flysystem\AdapterInterface: "@oneup_flysystem.local_adapter_adapter"
-    League\Flysystem\Filesystem:
+    League\Flysystem\FilesystemInterface: "@oneup_flysystem.local_filesystem"

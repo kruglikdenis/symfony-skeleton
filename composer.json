@@ -12,9 +12,12 @@
     "require": {
         "php": "^7.1.3",
         "ext-iconv": "*",
+        "bornfree/tactician-doctrine-domain-events": "^0.4.0",
         "bornfreee/tactician-domain-events-bundle": "^0.5.3",
         "fesor/request-objects": "^0.3.0",
         "gpslab/domain-event-bundle": "^2.1",
+        "league/tactician-bundle": "^1.1",
+        "league/tactician-doctrine": "^1.1",
         "lexik/jwt-authentication-bundle": "^2.4",
         "nelmio/api-doc-bundle": "^3.1",
         "oneup/flysystem-bundle": "^3.0",

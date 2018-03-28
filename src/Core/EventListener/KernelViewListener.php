@@ -7,6 +7,7 @@ namespace App\Core\EventListener;
 use App\Core\Http\Annotation\AnnotationResolver;
 use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
+use BornFree\TacticianDoctrineDomainEvent\EventListener\CollectsEventsFromAllEntitiesManagedByUnitOfWork;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -14,11 +15,6 @@ use Symfony\Component\Serializer\Serializer;
 
 class KernelViewListener
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-
     /**
      * @var Serializer
      */
@@ -29,16 +25,14 @@ class KernelViewListener
      */
     private $annotationResolver;
 
-    public function __construct(EntityManagerInterface $em, Serializer $serializer = null, AnnotationResolver $annotationResolver)
+    public function __construct(Serializer $serializer = null, AnnotationResolver $annotationResolver)
     {
-        $this->em = $em;
         $this->serializer = $serializer;
         $this->annotationResolver = $annotationResolver;
     }
 
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
-        $this->flushChanges();
         $this->transformResponse($event);
     }
 
@@ -68,13 +62,5 @@ class KernelViewListener
         $event->setResponse(
             new Response($this->serializer->serialize($data, $format, $context), $code)
         );
-    }
-
-    /**
-     * Flush changes
-     */
-    private function flushChanges()
-    {
-        $this->em->flush();
     }
 }

@@ -1,0 +1,2 @@
+tactician_domain_event:
+    collect_from_all_managed_entities: true

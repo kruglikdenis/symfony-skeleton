@@ -1,5 +1,6 @@
 imports:
     - { resource: ./actions.yaml }
+    - { resource: ./listeners.yaml }
 
 services:
     _defaults:

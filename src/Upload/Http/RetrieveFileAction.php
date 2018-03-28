@@ -2,6 +2,7 @@
 
 namespace App\Upload\Http;
 
+use App\Core\Http\BaseAction;
 use App\Upload\FileNotFoundException;
 use League\Flysystem\Adapter\AbstractAdapter;
 use League\Flysystem\Filesystem;
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @Route("/files")
  */
-class RetrieveFileAction
+class RetrieveFileAction extends BaseAction
 {
     /**
      * @var Filesystem

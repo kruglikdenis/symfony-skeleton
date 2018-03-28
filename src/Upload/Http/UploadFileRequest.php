@@ -4,9 +4,9 @@ namespace App\Upload\Http;
 
 
 use App\Core\Http\RequestObject;
-use App\Upload\DefaultConstraint;
-use App\Upload\ImageConstraint;
-use App\Upload\ValidationConstraintFactory;
+use App\Upload\Validation\DefaultConstraintCreator;
+use App\Upload\Validation\ImageConstraintCreator;
+use App\Upload\Validation\ValidationConstraintFactory;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -28,8 +28,8 @@ class UploadFileRequest extends RequestObject
     {
         $this->validationFactory = new ValidationConstraintFactory();
         $this->validationFactory
-            ->add(new ImageConstraint())
-            ->add(new DefaultConstraint());
+            ->add(new ImageConstraintCreator())
+            ->add(new DefaultConstraintCreator());
     }
 
 

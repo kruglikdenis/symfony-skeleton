@@ -3,9 +3,8 @@
 namespace App\Upload\Http;
 
 
-use App\Upload\UploadedFile;
-use App\Upload\FileReference;
-use League\Flysystem\FilesystemInterface;
+use App\Upload\File;
+use App\Upload\Files;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -14,14 +13,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  */
 class UploadFileAction
 {
-    /**
-     * @var FilesystemInterface
-     */
-    private $filesystem;
+    private $files;
 
-    public function __construct(FilesystemInterface $filesystem)
+    public function __construct(Files $files)
     {
-        $this->filesystem = $filesystem;
+        $this->files = $files;
     }
 
     /**
@@ -29,12 +25,14 @@ class UploadFileAction
      * @Route("/upload")
      *
      * @param UploadFileRequest $request
-     * @return FileReference
+     * @return File
      */
-    public function __invoke(UploadFileRequest $request): FileReference
+    public function __invoke(UploadFileRequest $request): File
     {
-        $file = new UploadedFile($request->file);
+        $file = new File($request->file);
 
-        return $file->save($this->filesystem);
+        $this->files->add($file);
+
+        return $file;
     }
 }

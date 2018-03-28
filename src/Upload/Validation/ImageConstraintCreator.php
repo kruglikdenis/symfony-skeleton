@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Upload;
+namespace App\Upload\Validation;
 
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints as Assert;
 
-final class ImageConstraint implements FileConstraint
+final class ImageConstraintCreator implements FileConstraintCreator
 {
     public const MIME_TYPES = [
         'image/jpeg',

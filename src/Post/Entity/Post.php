@@ -2,7 +2,6 @@
 
 namespace App\Post\Entity;
 
-use App\Upload\FileReference;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
@@ -32,8 +31,8 @@ class Post
     private $description;
 
     /**
-     * @var FileReference
-     * @ORM\Embedded(class="Example\Uploads\FileReference")
+     * @var
+     * @ORM\Column(type="string")
      */
     private $media;
 

@@ -28,3 +28,7 @@ doctrine:
                 type: annotation
                 dir: '%kernel.project_dir%/src/Security/Entity'
                 prefix: 'App\Security\Entity'
+            uploads:
+                type: annotation
+                dir: '%kernel.project_dir%/src/Upload'
+                prefix: 'App\Upload'

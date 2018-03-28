@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Upload;
+namespace App\Upload\Validation;
 
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraint;
 
-interface FileConstraint
+interface FileConstraintCreator
 {
     /**
      * Get rule for validation

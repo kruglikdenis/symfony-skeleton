@@ -3,7 +3,6 @@
 namespace App\Post\Entity;
 
 
-use App\Upload\FileReference;
 
 class PostBuilder
 {
@@ -13,7 +12,7 @@ class PostBuilder
     private $description;
 
     /**
-     * @var FileReference
+     * @var
      */
     private $media;
 
@@ -52,11 +51,11 @@ class PostBuilder
     }
 
     /**
-     * @param FileReference $media
+     * @param  $media
      *
      * @return PostBuilder
      */
-    public function setMedia(FileReference $media): self
+    public function setMedia( $media): self
     {
         $this->media = $media;
 
@@ -84,9 +83,9 @@ class PostBuilder
     }
 
     /**
-     * @return FileReference
+     * @return
      */
-    public function media(): FileReference
+    public function media()
     {
         return $this->media;
     }

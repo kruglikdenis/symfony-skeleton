@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Upload;
+namespace App\Upload\Validation;
 
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -9,14 +9,14 @@ use Symfony\Component\Validator\Constraint;
 class ValidationConstraintFactory
 {
     /**
-     * @var FileConstraint[]
+     * @var FileConstraintCreator[]
      */
     private $supportedTypes;
 
     /**
      * Build file
      *
-     * @param UploadedFile $file
+     * @param File $file
      * @return Constraint
      */
     public function create(UploadedFile $file): ?Constraint
@@ -33,10 +33,10 @@ class ValidationConstraintFactory
     /**
      * Add validation rule
      *
-     * @param FileConstraint $constraint
+     * @param FileConstraintCreator $constraint
      * @return ValidationConstraintFactory
      */
-    public function add(FileConstraint $constraint): self
+    public function add(FileConstraintCreator $constraint): self
     {
         $this->supportedTypes[] = $constraint;
 

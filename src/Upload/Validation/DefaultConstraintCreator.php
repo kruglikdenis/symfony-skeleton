@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Upload;
+namespace App\Upload\Validation;
 
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints as Assert;
 
-final class DefaultConstraint implements FileConstraint
+final class DefaultConstraintCreator implements FileConstraintCreator
 {
     /**
      * @inheritdoc

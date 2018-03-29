@@ -8,7 +8,10 @@ services:
         public: true
 
     App\Post\Entity\Posts: '@App\Post\Entity\PostRepository'
-    App\Post\Entity\TagExtractor: '@App\Post\Service\TextTagExtractor'
+    App\Post\Entity\TagExtractor: '@App\Post\Service\DoctrineTagsExtractor'
 
     App\Post\Service\TextTagExtractor:
+    App\Post\Service\DoctrineTagsExtractor:
+        arguments:
+            - '@App\Post\Service\TextTagExtractor'
     App\Post\Entity\PostRepository:

@@ -2,7 +2,9 @@
 
 namespace App\Post\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(readOnly=true)
@@ -13,12 +15,16 @@ class Tag
     /**
      * @ORM\Id
      * @ORM\Column(type="guid")
+     *
+     * @Groups({"api_post_create"})
      */
     private $id;
 
     /**
      * @var string
      * @ORM\Column(type="string")
+     *
+     * @Groups({"api_post_create"})
      */
     private $tag;
 

@@ -5,6 +5,7 @@ namespace App\Post\Http;
 
 use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
+use App\Core\Http\BaseAction;
 use App\Post\Entity\Post;
 use App\Post\Entity\Posts;
 use App\Post\Entity\TagExtractor;
@@ -15,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 /**
  * @Route("/posts")
  */
-class AddPostAction
+class AddPostAction extends BaseAction
 {
     /**
      * @var Posts
@@ -48,6 +49,7 @@ class AddPostAction
         $post = Post::builder()
             ->setAuthor($credential->id())
             ->setDescription($request->description, $this->tagExtractor)
+            ->setMedia($request->media)
             ->build();
 
         $this->posts->add($post);

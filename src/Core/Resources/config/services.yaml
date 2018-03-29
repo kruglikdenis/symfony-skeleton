@@ -38,8 +38,8 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }
 
-    App\Core\Normalizer\StringableNormalizer:
+    App\Core\Normalizer\CollectionNormalizer:
         tags: [ serializer.normalizer ]
 
-    App\Core\Normalizer\CollectionNormalizer:
+    App\Core\Normalizer\StringableNormalizer:
         tags: [ serializer.normalizer ]

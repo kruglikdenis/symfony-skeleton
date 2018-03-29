@@ -7,20 +7,20 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Embeddable()
  */
-class Author
+class Media
 {
     /**
      * @ORM\Column(type="guid")
      */
-    public $userId;
+    private $fileId;
 
-    public function __construct(string $userId)
+    public function __construct(string $id)
     {
-        $this->userId = $userId;
+        $this->fileId = $id;
     }
 
     public function __toString(): string
     {
-        return $this->userId;
+        return $this->fileId;
     }
 }

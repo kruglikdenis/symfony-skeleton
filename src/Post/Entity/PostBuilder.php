@@ -12,7 +12,7 @@ class PostBuilder
     private $description;
 
     /**
-     * @var
+     * @var Media
      */
     private $media;
 
@@ -51,13 +51,13 @@ class PostBuilder
     }
 
     /**
-     * @param  $media
+     * @param $id
      *
      * @return PostBuilder
      */
-    public function setMedia( $media): self
+    public function setMedia(string $id): self
     {
-        $this->media = $media;
+        $this->media = new Media($id);
 
         return $this;
     }
@@ -83,9 +83,9 @@ class PostBuilder
     }
 
     /**
-     * @return
+     * @return Media
      */
-    public function media()
+    public function media(): Media
     {
         return $this->media;
     }

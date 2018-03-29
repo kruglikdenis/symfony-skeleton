@@ -8,11 +8,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class AddPostRequest extends RequestObject
 {
+    public $media;
+
     public $description;
 
     public function rules()
     {
         return new Assert\Collection([
+            'media_id' => new Assert\NotBlank(),
             'description' => new Assert\NotBlank()
         ]);
     }
@@ -20,5 +23,6 @@ class AddPostRequest extends RequestObject
     public function map(Request $request): void
     {
         $this->description = $request->get('description');
+        $this->media = $request->get('media_id');
     }
 }

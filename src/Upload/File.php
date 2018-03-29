@@ -28,7 +28,6 @@ class File implements ContainsRecordedEvents
      * @var FileInfo
      *
      * @ORM\Embedded(class="App\Upload\FileInfo", columnPrefix=false)
-     * @Groups({"api_file"})
      */
     private $info;
 

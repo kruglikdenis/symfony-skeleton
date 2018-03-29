@@ -32,12 +32,12 @@ class CredentialRepository implements Credentials
             ))
             ->setParameter('email', (string) $email);
 
-        $credentials = $qb->getQuery()->getOneOrNullResult();
+        $credential = $qb->getQuery()->getOneOrNullResult();
 
-        if (null === $credentials) {
+        if (null === $credential) {
             throw new EntityNotFoundException();
         }
 
-        return $credentials;
+        return $credential;
     }
 }

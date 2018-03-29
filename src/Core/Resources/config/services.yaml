@@ -38,7 +38,7 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }
 
-    App\Core\Normalizer\UuidNormalizer:
+    App\Core\Normalizer\StringableNormalizer:
         tags: [ serializer.normalizer ]
 
     App\Core\Normalizer\CollectionNormalizer:

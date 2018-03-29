@@ -1,6 +1,5 @@
 imports:
     - { resource: ./actions.yaml }
-    - { resource: ./listeners.yaml }
 
 services:
     _defaults:
@@ -9,8 +8,10 @@ services:
         public: true
 
     App\Upload\Files: '@App\Upload\FileRepository'
+    App\Upload\FileSaver: '@App\Upload\FlysystemSaver'
 
     League\Flysystem\AdapterInterface: '@oneup_flysystem.local_adapter_adapter'
     League\Flysystem\FilesystemInterface: '@oneup_flysystem.local_filesystem'
 
     App\Upload\FileRepository:
+    App\Upload\FlysystemSaver:

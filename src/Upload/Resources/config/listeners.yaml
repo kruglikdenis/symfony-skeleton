@@ -1,9 +1,0 @@
-services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        public: true
-
-    App\Upload\UploadFileAfterAttachListener:
-        tags:
-            - { name: tactician.event_listener, event: App\Upload\FileWasAttached }

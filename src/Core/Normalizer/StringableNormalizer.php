@@ -2,10 +2,10 @@
 
 namespace App\Core\Normalizer;
 
-use Ramsey\Uuid\Uuid;
+
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class UuidNormalizer implements NormalizerInterface
+class StringableNormalizer implements NormalizerInterface
 {
 
     public function normalize($object, $format = null, array $context = array())
@@ -15,6 +15,14 @@ class UuidNormalizer implements NormalizerInterface
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof Uuid;
+        if (is_object($data) && method_exists($data, '__toString')) {
+            return true;
+        }
+
+        if (is_null($data)) {
+            return true;
+        }
+
+        return is_scalar($data);
     }
 }

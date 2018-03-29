@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Upload;
+namespace App\Upload\Exception;
 
 
 use App\Core\Exception\DomainException;

@@ -7,10 +7,10 @@ use BornFree\TacticianDomainEvent\Recorder\ContainsRecordedEvents;
 use BornFree\TacticianDomainEvent\Recorder\EventRecorderCapabilities;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Upload\FileRepository")
  * @ORM\Table(name="files")
  */
 class File implements ContainsRecordedEvents
@@ -20,42 +20,31 @@ class File implements ContainsRecordedEvents
     /**
      * @ORM\Id
      * @ORM\Column(type="guid")
+     * @Groups({"api_file"})
      */
     private $id;
 
     /**
      * @var FileInfo
+     *
      * @ORM\Embedded(class="App\Upload\FileInfo", columnPrefix=false)
+     * @Groups({"api_file"})
      */
     private $info;
 
-    public function __construct(UploadedFile $file)
+    public function __construct(FileInfo $info)
     {
         $this->id = Uuid::uuid4();
-        $this->attachFile($file);
+        $this->info = $info;
     }
 
     /**
-     * Attach file to entity
+     * Get file name
      *
-     * @param UploadedFile $file
-     * @throws FileNotValidException
+     * @return FileName
      */
-    private function attachFile(UploadedFile $file)
+    public function name(): FileName
     {
-        if (!$file->isValid()) {
-            throw new FileNotValidException();
-        }
-
-        $this->info = new FileInfo($file);
-        $this->record(new FileWasAttached($file, $this->name()));
-    }
-
-    /**
-     * @return string
-     */
-    public function name(): string
-    {
-        return (string) $this->id . $this->info->normalizedExtension();
+        return $this->info->name();
     }
 }

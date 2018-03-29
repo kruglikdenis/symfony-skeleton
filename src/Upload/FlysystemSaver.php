@@ -5,8 +5,9 @@ namespace App\Upload;
 
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class UploadFileAfterAttachListener
+class FlysystemSaver implements FileSaver
 {
     /**
      * @var Filesystem
@@ -18,14 +19,17 @@ class UploadFileAfterAttachListener
         $this->filesystem = $filesystem;
     }
 
-    public function __invoke(FileWasAttached $event)
+    /**
+     * @inheritdoc
+     */
+    public function save(UploadedFile $file): File
     {
-        $file = $event->file();
+        $info = new FileInfo($file);
 
         $stream = fopen($file->getRealPath(), 'r+');
-
-        $this->filesystem->writeStream($event->name(), $stream);
-
+        $this->filesystem->writeStream($info->name(), $stream);
         fclose($stream);
+
+        return new File($info);
     }
 }

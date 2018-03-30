@@ -46,6 +46,8 @@ class UploadFileAction extends BaseAction
 
         $this->files->add($file);
 
+        $this->flushChanges();
+
         return $file;
     }
 }

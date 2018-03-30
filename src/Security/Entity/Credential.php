@@ -10,10 +10,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity
  * @ORM\Table(name="credentials")
- * @Assert\UniqueEntity(
- *     fields={"email.email"},
- *     errorPath="[email]"
- * )
  */
 class Credential implements UserInterface
 {

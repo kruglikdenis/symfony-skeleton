@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Embeddable()
  */
-class Author
+class User
 {
     /**
      * @ORM\Column(type="guid")

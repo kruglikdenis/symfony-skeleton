@@ -7,9 +7,6 @@ services:
         autoconfigure: true
         public: true
 
+    App\User\Entity\Users: '@App\User\Entity\UserRepository'
+
     App\User\Entity\UserRepository:
-    App\User\Service\UserRegisterer:
-        arguments:
-            - '@App\User\Entity\UserRepository'
-            - '@security.encoder_factory'
-            - '@validator'

@@ -17,7 +17,7 @@ class PostBuilder
     private $media;
 
     /**
-     * @var Author
+     * @var User
      */
     private $author;
 
@@ -69,7 +69,7 @@ class PostBuilder
      */
     public function setAuthor(string $id): self
     {
-        $this->author = new Author($id);
+        $this->author = new User($id);
 
         return $this;
     }
@@ -91,9 +91,9 @@ class PostBuilder
     }
 
     /**
-     * @return Author
+     * @return User
      */
-    public function author(): Author
+    public function author(): User
     {
         return $this->author;
     }

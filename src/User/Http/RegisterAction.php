@@ -3,26 +3,37 @@
 namespace App\User\Http;
 
 
+use App\Core\Exception\ErrorMessage;
+use App\Core\Exception\UniqueException;
 use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
+use App\Core\Http\BaseAction;
 use App\User\Entity\User;
-use App\User\Service\UserRegisterer;
+use App\User\Entity\Users;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 /**
  * @Route("/users")
  */
-class RegisterAction
+class RegisterAction extends BaseAction
 {
     /**
-     * @var UserRegisterer
+     * @var Users
      */
-    private $registerer;
+    private $users;
 
-    public function __construct(UserRegisterer $registerer)
+    /**
+     * @var EncoderFactoryInterface
+     */
+    private $encoder;
+
+    public function __construct(Users $users, EncoderFactoryInterface $encoder)
     {
-        $this->registerer = $registerer;
+        $this->users = $users;
+        $this->encoder = $encoder;
     }
 
     /**
@@ -36,6 +47,16 @@ class RegisterAction
      */
     public function __invoke(RegisterRequest $request)
     {
-        return $this->registerer->register($request);
+        $user = User::builder()
+            ->setEmail($request->email)
+            ->setPassword($request->password, $this->encoder)
+            ->setFullName($request->firstName, $request->lastName, $request->middleName)
+            ->build();
+
+        $this->users->add($user);
+
+        $this->flushChanges();
+
+        return $user;
     }
 }

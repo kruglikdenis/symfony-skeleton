@@ -6,7 +6,7 @@ use App\Core\Exception\DomainException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
-class DomainExceptionListener
+final class DomainExceptionListener
 {
     public function onDomainException(GetResponseForExceptionEvent $event)
     {

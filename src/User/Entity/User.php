@@ -71,20 +71,4 @@ class User implements ContainsRecordedEvents
     {
         return [ self::ROLE_USER ];
     }
-
-    /**
-     * Validate user
-     *
-     * @param ValidatorInterface $validator
-     * @throws ValidationException
-     */
-    public function validate(ValidatorInterface $validator): void
-    {
-        $errors = $validator->validate($this);
-        $errors->addAll($validator->validate($this->credential));
-
-        if (0 !== count($errors)) {
-            throw new ValidationException($errors);
-        }
-    }
 }

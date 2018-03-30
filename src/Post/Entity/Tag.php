@@ -16,7 +16,7 @@ class Tag
      * @ORM\Id
      * @ORM\Column(type="guid")
      *
-     * @Groups({"api_post_create"})
+     * @Groups({"api_post"})
      */
     private $id;
 
@@ -24,7 +24,7 @@ class Tag
      * @var string
      * @ORM\Column(type="string")
      *
-     * @Groups({"api_post_create"})
+     * @Groups({"api_post"})
      */
     private $tag;
 

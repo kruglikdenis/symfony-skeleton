@@ -1,3 +1,6 @@
 services:
     App\Post\Http\AddPostAction:
         parent: App\Core\Http\BaseAction
+
+    App\Post\Http\LikePostAction:
+        parent: App\Core\Http\BaseAction

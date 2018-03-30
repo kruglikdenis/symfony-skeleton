@@ -1,8 +1,4 @@
 services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        public: false
 
     App\User\Http\RegisterAction:
-        tags: ['controller.service_arguments']
+        parent: App\Core\Http\BaseAction

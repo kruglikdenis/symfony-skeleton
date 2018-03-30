@@ -36,7 +36,7 @@ class AddPostAction extends BaseAction
 
     /**
      * @Method({"POST"})
-     * @ResponseGroups({"api_post_create"})
+     * @ResponseGroups({"api_post"})
      * @ResponseCode(201)
      *
      * @param AddPostRequest $request
@@ -53,6 +53,8 @@ class AddPostAction extends BaseAction
             ->build();
 
         $this->posts->add($post);
+
+        $this->flushChanges();
 
         return $post;
     }

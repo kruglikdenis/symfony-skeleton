@@ -2,7 +2,6 @@
 
 namespace App\User\Entity;
 
-use App\Core\Exception\ValidationException;
 use App\Security\Entity\Credential;
 use App\Security\Entity\Email;
 use BornFree\TacticianDomainEvent\Recorder\ContainsRecordedEvents;
@@ -10,7 +9,6 @@ use BornFree\TacticianDomainEvent\Recorder\EventRecorderCapabilities;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
 /**

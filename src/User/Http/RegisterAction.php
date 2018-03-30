@@ -3,14 +3,11 @@
 namespace App\User\Http;
 
 
-use App\Core\Exception\ErrorMessage;
-use App\Core\Exception\UniqueException;
 use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
 use App\Core\Http\BaseAction;
 use App\User\Entity\User;
 use App\User\Entity\Users;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;

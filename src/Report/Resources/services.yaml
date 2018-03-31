@@ -1,5 +1,6 @@
 imports:
     - { resource: ./actions.yaml }
+    - { resource: ./loaders.yaml }
 
 services:
     _defaults:
@@ -7,4 +8,5 @@ services:
         autoconfigure: true
         public: true
 
-    App\Report\UserLikeReportQuery:
+    App\Report\DataLoader:
+        abstract: true

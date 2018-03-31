@@ -26,7 +26,6 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
 
-    BornFree\TacticianDoctrineDomainEvent\EventListener\CollectsEventsFromAllEntitiesManagedByUnitOfWork:
     App\Core\EventListener\KernelViewListener:
         arguments:
             - '@serializer'
@@ -41,5 +40,5 @@ services:
     App\Core\Normalizer\CollectionNormalizer:
         tags: [ serializer.normalizer ]
 
-    App\Core\Normalizer\StringableNormalizer:
+    App\Core\Normalizer\StringableObjectsNormalizer:
         tags: [ serializer.normalizer ]

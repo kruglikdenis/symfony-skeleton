@@ -9,6 +9,7 @@ imports:
     - { resource: ./../src/Upload/Resources/config/services.yaml }
     - { resource: ./../src/User/Resources/config/services.yaml }
     - { resource: ./../src/Post/Resources/config/services.yaml }
+    - { resource: ./../src/Report/Resources/services.yaml }
 
 services:
     # default configuration for services in *this* file

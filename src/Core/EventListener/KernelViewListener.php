@@ -58,9 +58,18 @@ class KernelViewListener
         $context = [
             'groups' => $this->annotationResolver->resolve($request, ResponseGroups::class)
         ];
-        $data = $this->serializer->normalize($result, $format, $context);
-        $event->setResponse(
-            new Response($this->serializer->serialize($data, $format, $context), $code)
-        );
+
+        if (null !== $result) {
+            $result = $this->serializer->serialize($result, $format, $context);
+        }
+
+        $event->setResponse(new Response($result, $code));
+    }
+
+    private function transformData($data, $code, $context)
+    {
+        if (null === $data) {
+            return null;
+        }
     }
 }

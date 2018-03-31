@@ -5,7 +5,7 @@ namespace App\Core\Normalizer;
 
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class StringableNormalizer implements NormalizerInterface
+class StringableObjectsNormalizer implements NormalizerInterface
 {
 
     public function normalize($object, $format = null, array $context = array())
@@ -19,10 +19,6 @@ class StringableNormalizer implements NormalizerInterface
             return true;
         }
 
-        if (is_null($data)) {
-            return true;
-        }
-
-        return is_scalar($data);
+        return false;
     }
 }

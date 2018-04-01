@@ -1,3 +1,0 @@
-services:
-    App\Report\UserLikeReportLoader:
-        parent:

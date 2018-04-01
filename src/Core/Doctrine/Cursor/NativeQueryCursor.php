@@ -50,7 +50,9 @@ class NativeQueryCursor extends AbstractCursor
             ->getConnection()
             ->getDatabasePlatform()
             ->modifyLimitQuery($this->originalItemsSql, $this->limit, $this->offset);
+
         $this->itemsQuery->setSQL($limitOffsetSql);
+
         yield from $this->itemsQuery->execute();
     }
 

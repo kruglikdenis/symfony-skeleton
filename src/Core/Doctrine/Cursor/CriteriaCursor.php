@@ -36,11 +36,17 @@ class CriteriaCursor extends AbstractCursor
         $this->orderBy = $orderBy;
     }
 
+    /**
+     * @return int
+     */
     protected function doCount(): int
     {
         return (int)$this->persister->count($this->criteria);
     }
 
+    /**
+     * @return \Traversable
+     */
     protected function doIterate(): \Traversable
     {
         yield from $this->persister->loadAll($this->criteria, $this->orderBy, $this->limit, $this->offset);

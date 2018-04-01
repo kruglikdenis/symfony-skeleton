@@ -12,15 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  */
 class GetUserLikeReportAction extends BaseAction
 {
-
     /**
      * @var UserLikeReportLoader
      */
-    private $query;
+    private $loader;
 
-    public function __construct(UserLikeReportLoader $query)
+    public function __construct(UserLikeReportLoader $loader)
     {
-        $this->query = $query;
+        $this->loader = $loader;
     }
 
     /**
@@ -28,8 +27,6 @@ class GetUserLikeReportAction extends BaseAction
      */
     public function __invoke()
     {
-//        $data = $this->query->load();
-//        return $this->query();
-        // TODO: Implement __invoke() method.
+        return $this->loader->load();
     }
 }

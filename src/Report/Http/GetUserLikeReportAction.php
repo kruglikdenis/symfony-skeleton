@@ -3,8 +3,10 @@
 namespace App\Report\Http;
 
 
+use App\Core\Doctrine\Cursor\Cursor;
 use App\Core\Http\BaseAction;
-use App\Report\UserLikeReportLoader;
+use App\Core\Http\Paginator;
+use App\Report\MostActiveUsersReport;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
@@ -13,20 +15,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class GetUserLikeReportAction extends BaseAction
 {
     /**
-     * @var UserLikeReportLoader
+     * @var MostActiveUsersReport
      */
     private $loader;
 
-    public function __construct(UserLikeReportLoader $loader)
+    public function __construct(MostActiveUsersReport $loader)
     {
         $this->loader = $loader;
     }
 
     /**
      * @Route("/like/report")
+     *
+     * @param Paginator $paginator
+     * @return Cursor
      */
-    public function __invoke()
+    public function __invoke(Paginator $paginator): Cursor
     {
-        return $this->loader->load();
+        return $this->loader->load($paginator);
     }
 }

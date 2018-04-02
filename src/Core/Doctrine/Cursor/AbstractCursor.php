@@ -4,6 +4,7 @@
 namespace App\Core\Doctrine\Cursor;
 
 
+
 abstract class AbstractCursor implements Cursor
 {
     /**
@@ -30,18 +31,24 @@ abstract class AbstractCursor implements Cursor
     /**
      * {@inheritdoc}
      */
-    public function setLimit(?int $limit): void
+    public function setLimit(?int $limit): Cursor
     {
         $this->limit = $limit;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setOffset(int $offset): void
+    public function setOffset(?int $offset): Cursor
     {
         $this->offset = $offset;
+
+        return $this;
     }
+
+
 
     /**
      * {@inheritdoc}
@@ -77,6 +84,22 @@ abstract class AbstractCursor implements Cursor
         }
 
         return $this->count;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function limit(): ?int
+    {
+        return $this->limit;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function offset(): ?int
+    {
+        return $this->offset;
     }
 
     /**

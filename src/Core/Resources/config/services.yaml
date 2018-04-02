@@ -33,11 +33,18 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.view }
 
+    App\Core\Http\PaginatorValueResolver:
+        tags:
+            - { name: controller.argument_value_resolver, priority: 1000 }
+
     App\Core\EventListener\DomainExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }
 
     App\Core\Normalizer\CollectionNormalizer:
+        tags: [ serializer.normalizer ]
+
+    App\Core\Normalizer\CursorNormalizer:
         tags: [ serializer.normalizer ]
 
     App\Core\Normalizer\StringableObjectsNormalizer:

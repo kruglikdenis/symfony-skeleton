@@ -7,4 +7,4 @@ services:
         autoconfigure: true
         public: true
 
-    App\Report\UserLikeReportLoader:
+    App\Report\MostActiveUsersReport:

@@ -31,9 +31,9 @@ class MostActiveUsersReport
 
         $this->rsm = $this->configureMapping();
         $this->countRsm = (new ResultSetMapping())
-        ->addScalarResult('count', 'count');
+            ->addScalarResult('count', 'count');
     }
-    
+
     /**
      * Load report
      *

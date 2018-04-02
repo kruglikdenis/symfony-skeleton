@@ -23,12 +23,17 @@ class MostActiveUsersReport
      */
     protected $rsm;
 
+    protected $countRsm;
+
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
-        $this->rsm = $this->configureMapping();
-    }
 
+        $this->rsm = $this->configureMapping();
+        $this->countRsm = (new ResultSetMapping())
+        ->addScalarResult('count', 'count');
+    }
+    
     /**
      * Load report
      *
@@ -82,12 +87,9 @@ class MostActiveUsersReport
      */
     private function countQuery(): AbstractQuery
     {
-        $rsm = (new ResultSetMapping())
-            ->addScalarResult('count', 'count');
-
         return $this->em->createNativeQuery(
             'SELECT COUNT(DISTINCT liker_user_id) FROM likes;',
-                $rsm
+                $this->countRsm
             );
     }
 }

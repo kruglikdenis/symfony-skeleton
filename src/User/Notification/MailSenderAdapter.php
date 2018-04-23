@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Mail\EventListener;
+namespace App\User\Notification\EventListener;
 
 
-use App\Mail\Message;
-use App\Mail\Sender;
+use App\Core\Service\Mail\Message;
+use App\Core\Service\Mail\Sender;
 
 class MailSenderAdapter
 {

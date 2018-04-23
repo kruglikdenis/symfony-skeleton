@@ -23,6 +23,9 @@ class MostActiveUsersReport
      */
     protected $rsm;
 
+    /**
+     * @var ResultSetMapping
+     */
     protected $countRsm;
 
     public function __construct(EntityManagerInterface $em)

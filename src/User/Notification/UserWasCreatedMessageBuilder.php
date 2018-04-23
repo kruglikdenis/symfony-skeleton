@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Mail\EventListener;
+namespace App\User\Notification\EventListener;
 
 
-use App\Mail\Mail;
+use App\Core\Service\Mail\Mail;
 use App\User\Entity\UserWasCreated;
 
 class UserWasCreatedMessageBuilder

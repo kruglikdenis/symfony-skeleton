@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Core\Service\Mail;
 
 use Symfony\Bundle\TwigBundle\TwigEngine;
 

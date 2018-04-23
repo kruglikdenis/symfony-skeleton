@@ -12,11 +12,8 @@ services:
             - '@controller_resolver'
             - '@annotations.reader'
 
-    App\Core\Http\BaseAction:
-        abstract: false
-        tags: ['controller.service_arguments']
-        calls:
-            - [setEntityManager, ['@doctrine.orm.entity_manager']]
+    App\Core\Doctrine\Flush:
+        public: true
 
     App\Core\Doctrine\MigrationEventSubscriber:
         tags:

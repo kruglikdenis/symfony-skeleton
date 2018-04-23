@@ -1,6 +1,9 @@
 services:
-    App\Post\Http\AddPostAction:
-        parent: App\Core\Http\BaseAction
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        tags: [ "controller.service_arguments" ]
 
+    App\Post\Http\AddPostAction:
     App\Post\Http\LikePostAction:
-        parent: App\Core\Http\BaseAction

@@ -3,7 +3,7 @@
 namespace App\Post\Http;
 
 
-use App\Core\Http\BaseAction;
+use App\Core\Doctrine\Flush;
 use App\Post\Entity\Post;
 use App\Post\Entity\Posts;
 use App\Post\Entity\User;
@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 /**
  * @Route("/posts")
  */
-class LikePostAction extends BaseAction
+class LikePostAction
 {
     /**
      * @var Posts
@@ -41,11 +41,11 @@ class LikePostAction extends BaseAction
      * @param Post $post
      * @param Credential $credential
      */
-    public function __invoke(Post $post, Credential $credential)
+    public function __invoke(Post $post, Credential $credential, Flush $flush)
     {
         $liker = new User($credential->id());
         $post->like($liker);
 
-        $this->flushChanges();
+        $flush();
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Upload\Http;
 
 
+use App\Core\Doctrine\Flush;
 use App\Core\Http\Annotation\ResponseGroups;
-use App\Core\Http\BaseAction;
 use App\Upload\File;
 use App\Upload\Files;
 use App\Upload\FileSaver;
@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 /**
  * @Route("/files")
  */
-class UploadFileAction extends BaseAction
+class UploadFileAction
 {
     /**
      * @var Files
@@ -40,13 +40,13 @@ class UploadFileAction extends BaseAction
      * @param UploadFileRequest $request
      * @return File
      */
-    public function __invoke(UploadFileRequest $request): File
+    public function __invoke(UploadFileRequest $request, Flush $flush): File
     {
         $file = $this->saver->save($request->file);
 
         $this->files->add($file);
 
-        $this->flushChanges();
+        $flush();
 
         return $file;
     }

@@ -1,6 +1,9 @@
 services:
-    App\Upload\Http\UploadFileAction:
-        parent: App\Core\Http\BaseAction
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        tags: [ "controller.service_arguments" ]
 
+    App\Upload\Http\UploadFileAction:
     App\Upload\Http\RetrieveFileAction:
-        parent: App\Core\Http\BaseAction

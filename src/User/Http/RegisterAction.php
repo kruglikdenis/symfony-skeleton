@@ -3,9 +3,9 @@
 namespace App\User\Http;
 
 
+use App\Core\Doctrine\Flush;
 use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
-use App\Core\Http\BaseAction;
 use App\User\Entity\User;
 use App\User\Entity\Users;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 /**
  * @Route("/users")
  */
-class RegisterAction extends BaseAction
+class RegisterAction
 {
     /**
      * @var Users
@@ -40,9 +40,10 @@ class RegisterAction extends BaseAction
      * @ResponseCode(201)
      *
      * @param RegisterRequest $request
+     * @param Flush $flush
      * @return User
      */
-    public function __invoke(RegisterRequest $request)
+    public function __invoke(RegisterRequest $request, Flush $flush)
     {
         $user = User::builder()
             ->setEmail($request->email)
@@ -52,7 +53,7 @@ class RegisterAction extends BaseAction
 
         $this->users->add($user);
 
-        $this->flushChanges();
+        $flush();
 
         return $user;
     }

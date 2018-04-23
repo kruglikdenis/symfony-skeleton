@@ -3,9 +3,9 @@
 namespace App\Post\Http;
 
 
+use App\Core\Doctrine\Flush;
 use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
-use App\Core\Http\BaseAction;
 use App\Post\Entity\Post;
 use App\Post\Entity\Posts;
 use App\Post\Entity\TagExtractor;
@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 /**
  * @Route("/posts")
  */
-class AddPostAction extends BaseAction
+class AddPostAction
 {
     /**
      * @var Posts
@@ -41,10 +41,11 @@ class AddPostAction extends BaseAction
      *
      * @param AddPostRequest $request
      * @param Credential $credential
+     * @param Flush $flush
      *
      * @return Post
      */
-    public function __invoke(AddPostRequest $request, Credential $credential)
+    public function __invoke(AddPostRequest $request, Credential $credential, Flush $flush)
     {
         $post = Post::builder()
             ->setAuthor($credential->id())
@@ -54,7 +55,7 @@ class AddPostAction extends BaseAction
 
         $this->posts->add($post);
 
-        $this->flushChanges();
+        $flush();
 
         return $post;
     }

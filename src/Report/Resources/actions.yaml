@@ -1,3 +1,2 @@
 services:
     App\Report\Http\GetUserLikeReportAction:
-        parent: App\Core\Http\BaseAction

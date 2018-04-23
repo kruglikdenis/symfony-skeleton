@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Core\Service\Mail;
 
 
 class Mail implements Message

@@ -54,7 +54,7 @@ class KernelViewListener
             return;
         }
 
-        $code = $this->annotationResolver->resolve($request, ResponseCode::class) ?? 200;
+        $code = $this->annotationResolver->resolve($request, ResponseCode::class) ?? Response::HTTP_OK;
         $context = [
             'groups' => $this->annotationResolver->resolve($request, ResponseGroups::class)
         ];
@@ -64,12 +64,5 @@ class KernelViewListener
         }
 
         $event->setResponse(new Response($result, $code));
-    }
-
-    private function transformData($data, $code, $context)
-    {
-        if (null === $data) {
-            return null;
-        }
     }
 }

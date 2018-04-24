@@ -6,6 +6,7 @@ namespace App\User\Http;
 use App\Core\Doctrine\Flush;
 use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
+use App\Security\Entity\Credential;
 use App\User\Entity\User;
 use App\User\Entity\Users;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -47,7 +48,7 @@ class RegisterAction
     {
         $user = User::builder()
             ->setEmail($request->email)
-            ->setPassword($request->password, $this->encoder)
+            ->setPassword($request->password, $this->encoder->getEncoder(Credential::class))
             ->setFullName($request->firstName, $request->lastName, $request->middleName)
             ->build();
 

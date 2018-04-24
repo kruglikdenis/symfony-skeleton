@@ -9,7 +9,7 @@ This is our day-to-day backend dev stack
  - PostgreSQL 9.6
  - Symfony 4.0
  - Doctrine ORM 2.5
- - Behat and PhpSpec as testing frameworks
+ - Codeception as testing frameworks
 
 ## Required software
 
@@ -44,8 +44,6 @@ console                     # symfony console running via docker container
 psql                        # connects psql to your database using containers
 compose                     # shortcut for `docker-compose -p app`. This needed until docker-compose 1.7 is released.
 composer                    # shortcut for running composer (with php7 in separate docker container)
-phpspec                     # shortcut for running PhpSpec
-behat                       # shortcut for running Behat in test environment
 ```
 
 ## Development
@@ -54,7 +52,14 @@ To start dev environment, just run `docker-compose up` and you are ready to go.
 
 ### Testing
 
-To run test suites you can use `support/scripts/run_tests` script, or use phpspec/behat separately (see aliases section).
+To run test suites you can use `docker/shortcuts/run_tests` script
+
+Usage:  test [suite] [option]
+
+Examples:
+   - run_tests                 - starts all tests suites
+   - run_tests unit            - starts unit test suite
+   - run_tests u - you may run suite for part of tests
 
 ### XDebug
 

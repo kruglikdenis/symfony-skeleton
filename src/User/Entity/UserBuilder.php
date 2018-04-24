@@ -3,10 +3,9 @@
 namespace App\User\Entity;
 
 
-use App\Security\Entity\Credential;
 use App\Security\Entity\Email;
 use App\Security\Entity\Password;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 class UserBuilder
 {
@@ -37,9 +36,9 @@ class UserBuilder
         return $this;
     }
 
-    public function setPassword(string $password, EncoderFactoryInterface $encoder): self
+    public function setPassword(string $password, PasswordEncoderInterface $encoder): self
     {
-        $this->password = new Password($password, $encoder->getEncoder(Credential::class));
+        $this->password = new Password($password, $encoder);
 
         return $this;
     }

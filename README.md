@@ -44,6 +44,7 @@ console                     # symfony console running via docker container
 psql                        # connects psql to your database using containers
 compose                     # shortcut for `docker-compose -p app`. This needed until docker-compose 1.7 is released.
 composer                    # shortcut for running composer (with php7 in separate docker container)
+php_stan                    # shortcut for running PHPstan (Static Analysis Tool)
 ```
 
 ## Development

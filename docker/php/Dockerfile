@@ -12,7 +12,6 @@ RUN docker-php-ext-install \
         bcmath
 
 RUN yes | pecl install apcu xdebug \
-        && docker-php-ext-enable xdebug \
         && echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini \
         && echo "apc.enable_cli=1" >> /usr/local/etc/php/conf.d/apcu.ini \
         && echo ";zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini \

@@ -16,6 +16,7 @@
         "bornfreee/tactician-domain-events-bundle": "^0.5.3",
         "fesor/request-objects": "^0.3.0",
         "gpslab/domain-event-bundle": "^2.1",
+        "happyr/doctrine-specification": "^0.7.2",
         "league/tactician-bundle": "^1.1",
         "league/tactician-doctrine": "^1.1",
         "lexik/jwt-authentication-bundle": "^2.4",
@@ -39,7 +40,9 @@
     },
     "require-dev": {
         "codeception/codeception": "^2.4",
+        "composer/xdebug-handler": "^1.1",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "finwe/phpstan-faker": "^0.4.0",
         "friendsofphp/php-cs-fixer": "~2.0",
         "fzaninotto/faker": "^1.7",
         "symfony/dotenv": "^4.0"

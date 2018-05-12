@@ -13,7 +13,6 @@ set -e
 
 
 suite=$(echo "$1" | awk '{print tolower($0)}')
-coverage=$2
 
 run_unit_tests=false
 # Normalize input
@@ -24,5 +23,5 @@ fi
 if [[ true == "$run_unit_tests" ]]; then
     echo "Run Unit Test Suite"
 
-    docker-compose run --no-deps --rm php codecept run unit $coverage
+    docker-compose run --no-deps --rm php codecept run unit
 fi

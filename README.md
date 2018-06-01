@@ -51,6 +51,13 @@ php_stan                    # shortcut for running PHPstan (Static Analysis Tool
 
 To start dev environment, just run `docker-compose up` and you are ready to go.
 
+## API Documentation
+
+In order to modify the documentation, you need to make changes to the `app/resources/docs/api.raml` file and regenerate the documentation using `apidoc` bash script.
+
+You can see the documentation for api by `${TARGET_HOST}/api.html`.
+
+
 ### Testing
 
 To run test suites you can use `docker/shortcuts/run_tests` script

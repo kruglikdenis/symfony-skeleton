@@ -7,8 +7,6 @@ services:
         build:
             context: './../'
             dockerfile: 'docker/php/Dockerfile'
-            args:
-                COMPOSER_AUTH: '{"github-oauth": {"github.com": "${COMPOSER_GITHUB_TOKEN}"}}'
         environment:
             - SYMFONY_ENV
             - DB_HOST
@@ -17,6 +15,7 @@ services:
             - DB_USER
             - DB_PASS
             - APP_SECRET
+            - TARGET_HOST
         volumes:
             - "${JWT_PRIVATE_KEY_PATH}:/keys/jwt_private.pem:ro"
             - "${JWT_PUBLIC_KEY_PATH}:/keys/jwt_public.pem:ro"

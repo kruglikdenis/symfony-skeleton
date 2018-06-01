@@ -1,5 +1,6 @@
 .git
 docker/*
 !docker/php/config
+!docker/php/scripts
 var/*
 vendor

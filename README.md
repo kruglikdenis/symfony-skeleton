@@ -7,7 +7,7 @@ This is our day-to-day backend dev stack
  - Pre-configured PHP 7.2 FPM and CLI
  - Pre-configured Nginx 1.11
  - PostgreSQL 9.6
- - Symfony 4.0
+ - Symfony 4.1
  - Doctrine ORM 2.5
  - Codeception as testing frameworks
 
@@ -39,6 +39,7 @@ export PATH=./docker/shortcuts:$PATH
 By doing this, you will be able to use short versions of commands:
 
 ```bash
+apidoc                      # run command to generate api doc from raml file
 php                         # run command in php container
 console                     # symfony console running via docker container
 psql                        # connects psql to your database using containers

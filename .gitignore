@@ -8,12 +8,9 @@
 /var/*
 /composer.phar
 docker/keys/*
+docker/nginx/web/api.html
 !.gitkeep
 .php_cs.cache
 .idea
 .DS_Store
 .env
-
-###> phpunit/phpunit ###
-/phpunit.xml
-###< phpunit/phpunit ###

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker run --rm -v $PWD:/app \
+    -e "INPUT=app/resources/docs/api.raml" \
+    -e "OUTPUT=docker/nginx/web/api.html" \
+    -e "FORMAT=slate" \
+    bbrodriges/raml2html

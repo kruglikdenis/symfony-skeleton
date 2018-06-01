@@ -1,9 +1,24 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: 'en'
+
+imports:
+    - { resource: ./../../src/Security/Resources/config/services.yaml }
+    - { resource: ./../../src/Upload/Resources/config/services.yaml }
+    - { resource: ./../../src/User/Resources/config/services.yaml }
+    - { resource: ./../../src/Post/Resources/config/services.yaml }
+    - { resource: ./../../src/Report/Resources/services.yaml }
+
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true
         autoconfigure: true
         public: false
+
+    Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface: '@serializer.mapping.class_metadata_factory'
+    Symfony\Component\Serializer\NameConverter\NameConverterInterface: '@serializer.name_converter.camel_case_to_snake_case'
 
     request_annotation_resolver:
         class: 'App\Core\Http\Annotation\HttpAnnotationResolver'
@@ -37,6 +52,9 @@ services:
     App\Core\EventListener\DomainExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }
+
+    Symfony\Component\Serializer\Normalizer\PropertyNormalizer:
+        tags: [ serializer.normalizer ]
 
     App\Core\Normalizer\CollectionNormalizer:
         tags: [ serializer.normalizer ]

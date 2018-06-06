@@ -39,7 +39,7 @@ RUN /composer/composer_installer.sh && \
 COPY composer.json composer.lock /app/
 RUN composer install --no-interaction --no-progress --no-ansi --no-autoloader --no-scripts
 
-CMD ["bash", "bin/boot.sh"]
+CMD ["bash", "bin/boot"]
 
 COPY docker/php/config/www.conf /usr/local/etc/php-fpm.d/www.conf
 

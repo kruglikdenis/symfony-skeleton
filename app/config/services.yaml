@@ -27,6 +27,10 @@ services:
             - '@controller_resolver'
             - '@annotations.reader'
 
+    App\DataFixture\ORM\:
+        resource: '../fixtures/ORM'
+        tags: ['doctrine.fixture.orm']
+
     App\Core\Doctrine\Flush:
         public: true
 

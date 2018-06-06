@@ -2,8 +2,8 @@
 
 namespace App\Post\Entity;
 
+use App\Core\Entity\UUIDTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -12,13 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Tag
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="guid")
-     *
-     * @Groups({"api_post"})
-     */
-    private $id;
+    use UUIDTrait;
 
     /**
      * @var string
@@ -30,12 +24,8 @@ class Tag
 
     public function __construct(string $tag)
     {
-        $this->id = Uuid::uuid4();
-        $this->tag = $tag;
-    }
+        $this->id = $this->generateUuid();
 
-    public function __toString()
-    {
-        return $this->tag;
+        $this->tag = $tag;
     }
 }

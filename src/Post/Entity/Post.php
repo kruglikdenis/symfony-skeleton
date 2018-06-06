@@ -2,9 +2,9 @@
 
 namespace App\Post\Entity;
 
+use App\Core\Entity\UUIDTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -13,13 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Post
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="guid")
-     *
-     * @Groups({"api_post"})
-     */
-    private $id;
+    use UUIDTrait;
 
     /**
      * @var User
@@ -61,11 +55,12 @@ class Post
 
     public function __construct(PostBuilder $builder)
     {
-        $this->id = Uuid::uuid4();
+        $this->id = $this->generateUuid();
+
         $this->description = $builder->description();
-        $this->tags = new ArrayCollection($builder->tags());
         $this->media = $builder->media();
         $this->author = $builder->author();
+        $this->tags = new ArrayCollection($builder->tags());
         $this->likes = new ArrayCollection();
     }
 

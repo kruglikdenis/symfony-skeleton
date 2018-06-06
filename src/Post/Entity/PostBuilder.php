@@ -85,7 +85,7 @@ class PostBuilder
     /**
      * @return Media
      */
-    public function media(): Media
+    public function media(): ?Media
     {
         return $this->media;
     }

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Media
 {
     /**
-     * @ORM\Column(type="guid")
+     * @ORM\Column(type="guid", nullable=true)
      */
     private $fileId;
 

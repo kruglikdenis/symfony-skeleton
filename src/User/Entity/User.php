@@ -2,12 +2,12 @@
 
 namespace App\User\Entity;
 
+use App\Core\Entity\UUIDTrait;
 use App\Security\Entity\Credential;
 use App\Security\Entity\Email;
 use BornFree\TacticianDomainEvent\Recorder\ContainsRecordedEvents;
 use BornFree\TacticianDomainEvent\Recorder\EventRecorderCapabilities;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 
@@ -18,18 +18,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class User implements ContainsRecordedEvents
 {
     use EventRecorderCapabilities;
+    use UUIDTrait;
 
     public const ROLE_USER = 'ROLE_USER';
-
-    /**
-     * @var Uuid
-     * @ORM\Id
-     * @ORM\Column(type="guid")
-     *
-     * @Groups({"api_user_register"})
-     */
-    private $id;
-
 
     /**
      * @var FullName
@@ -48,7 +39,7 @@ class User implements ContainsRecordedEvents
 
     public function __construct(UserBuilder $builder)
     {
-        $this->id = Uuid::uuid4();
+        $this->id = $this->generateUuid();
         $this->fullName = $builder->fullName();
         $this->credential = new Credential($this->id, $builder->email(), $builder->password(), $this->roles());
 

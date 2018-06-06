@@ -2,8 +2,8 @@
 
 namespace App\Security\Entity;
 
+use App\Core\Entity\UUIDTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -12,11 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class Credential implements UserInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="guid")
-     */
-    private $id;
+    use UUIDTrait;
 
     /**
      * @var string
@@ -36,21 +32,12 @@ class Credential implements UserInterface
      */
     private $roles;
 
-
-    public function __construct(Uuid $id, Email $email, Password $password, array $roles)
+    public function __construct(string $id, Email $email, Password $password, array $roles)
     {
         $this->id = $id;
         $this->email = $email;
         $this->password = $password;
         $this->roles = $roles;
-    }
-
-    /**
-     * @return string
-     */
-    public function id(): string
-    {
-        return (string) $this->id;
     }
 
     /**

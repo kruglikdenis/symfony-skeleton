@@ -1,13 +1,14 @@
 <?php
-namespace User\Entity;
+namespace App\Test\User\Entity;
 
 use App\Security\Entity\Credential;
 use App\Security\Entity\Email;
 use App\User\Entity\FullName;
 use App\User\Entity\User;
+use Codeception\Test\Unit;
 use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 
-class UserBuilderTest extends \Codeception\Test\Unit
+class UserBuilderTest extends Unit
 {
     /**
      * @var \UnitTester

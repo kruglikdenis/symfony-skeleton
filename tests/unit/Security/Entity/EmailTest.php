@@ -1,10 +1,12 @@
 <?php
-namespace Security\Entity;
+
+namespace App\Test\Security\Entity;
 
 use App\Security\Entity\Email;
 use App\Core\Exception\InvalidArgumentException;
+use Codeception\Test\Unit;
 
-class EmailTest extends \Codeception\Test\Unit
+class EmailTest extends Unit
 {
     /**
      * @var \UnitTester

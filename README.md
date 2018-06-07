@@ -67,7 +67,8 @@ Usage:  test [suite] [option]
 Examples:
    - run_tests                 - starts all tests suites
    - run_tests unit            - starts unit test suite
-   - run_tests u - you may run suite for part of tests
+   - run_tests api             - starts api test suite
+   - run_tests u               - you may run suite for part of tests
 
 ### XDebug
 

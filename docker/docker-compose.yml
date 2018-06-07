@@ -18,6 +18,8 @@ services:
             - DB_PASS
             - APP_SECRET
             - TARGET_HOST
+            - JWT_PRIVATE_KEY_PATH
+            - JWT_PUBLIC_KEY_PATH
         volumes:
             - "${JWT_PRIVATE_KEY_PATH}:/keys/jwt_private.pem:ro"
             - "${JWT_PUBLIC_KEY_PATH}:/keys/jwt_public.pem:ro"

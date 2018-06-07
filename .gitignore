@@ -13,4 +13,5 @@ docker/nginx/web/api.html
 .php_cs.cache
 .idea
 .DS_Store
-.env
+tests/_output
+tests/_support/_generated

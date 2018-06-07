@@ -4,8 +4,14 @@ set -e
 
 dir=$(dirname "${BASH_SOURCE[0]}")
 
-docker/shortcuts/composer install --ignore-platform-reqs --optimize-autoloader
+echo "Make apidoc"
+bash "$dir/../shortcuts/apidoc"
 
+echo "Build jwt keys"
+bash "$dir/../scripts/prepare_jwt_keys"
+
+echo "Run tests"
+bash "$dir/../shortcuts/run_tests"
 
 export COMPOSE_FILE=docker/docker-compose.yml:docker/docker-compose.prod.yml
 docker-compose build --force-rm

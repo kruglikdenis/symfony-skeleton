@@ -9,19 +9,44 @@ set -e
 # Examples:
 #     run_tests                 - starts all tests suites
 #     run_tests unit            - starts unit test suite
-#     run_tests u - you may run suite for part of tests
+#     run_tests api             - starts api test suite
+#     run_tests u               - you may run suite for part of tests
 
 
 suite=$(echo "$1" | awk '{print tolower($0)}')
 
 run_unit_tests=false
+run_api_tests=false
 # Normalize input
 if [[ "unit" == "$suite"* ]]; then
   run_unit_tests=true
+fi
+if [[ "api" == "$suite"* ]]; then
+  run_api_tests=true
 fi
 
 if [[ true == "$run_unit_tests" ]]; then
     echo "Run Unit Test Suite"
 
-    docker-compose run --no-deps --rm php codecept run unit
+    docker-compose run --no-deps --rm php bin/codecept run unit
+fi
+
+if [[ true == "$run_api_tests" ]]; then
+    echo "Run Api Test Suite"
+
+    [ -z "$COMPOSE_FILE" ] && COMPOSE_FILE=$(cat .env | grep COMPOSE_FILE | cut -d = -f 2)
+    COMPOSE_FILE="$COMPOSE_FILE:docker/docker-compose.test.yml";
+    export COMPOSE_FILE=$COMPOSE_FILE
+
+    docker-compose up -d database_test
+    cmd="bin/wait_for_db"
+    cmd="$cmd && bin/console doctrine:schema:update --force"
+    cmd="$cmd && bin/console doctrine:fixtures:load -n"
+
+    passed=0;
+    docker-compose run --rm php bash -c "$cmd" || passed=$?
+    docker-compose run --rm php bash -c "php -d \"memory_limit=512M\" bin/codecept run api  -vvv"
+
+    docker-compose kill database_test
+    docker-compose rm -f database_test
 fi

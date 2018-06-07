@@ -19,40 +19,26 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 class RegisterAction
 {
     /**
-     * @var Users
-     */
-    private $users;
-
-    /**
-     * @var EncoderFactoryInterface
-     */
-    private $encoder;
-
-    public function __construct(Users $users, EncoderFactoryInterface $encoder)
-    {
-        $this->users = $users;
-        $this->encoder = $encoder;
-    }
-
-    /**
      * @Method({"POST"})
      * @Route("/register")
      * @ResponseGroups({"api_user_register"})
      * @ResponseCode(201)
      *
      * @param RegisterRequest $request
+     * @param Users $users
+     * @param EncoderFactoryInterface $encoder
      * @param Flush $flush
      * @return User
      */
-    public function __invoke(RegisterRequest $request, Flush $flush)
+    public function __invoke(RegisterRequest $request, Users $users, EncoderFactoryInterface $encoder, Flush $flush)
     {
         $user = User::builder()
             ->setEmail($request->email)
-            ->setPassword($request->password, $this->encoder->getEncoder(Credential::class))
+            ->setPassword($request->password, $encoder->getEncoder(Credential::class))
             ->setFullName($request->firstName, $request->lastName, $request->middleName)
             ->build();
 
-        $this->users->add($user);
+        $users->add($user);
 
         $flush();
 

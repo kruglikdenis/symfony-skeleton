@@ -2,7 +2,7 @@ oneup_flysystem:
     adapters:
         local_adapter:
             local:
-                directory: "%kernel.root_dir%/../var/uploads"
+                directory: '/web/files'
                 lazy: ~
                 writeFlags: ~
                 linkHandling: ~

@@ -16,7 +16,7 @@ class ValidationConstraintFactory
     /**
      * Build file
      *
-     * @param File $file
+     * @param UploadedFile $file
      * @return Constraint
      */
     public function create(UploadedFile $file): ?Constraint

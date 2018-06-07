@@ -2,13 +2,15 @@ version: "3"
 
 services:
     php:
-        command: ["php-fpm", "--allow-to-run-as-root", "-d", "zend_extension=xdebug.so"]
         volumes:
             - "../.:/app"
+            - "../docker/nginx/web/.:/web"
         environment:
             - PHP_IDE_CONFIG=serverName=${TARGET_HOST}
 
     front:
+        volumes:
+            - "../docker/nginx/web/.:/web"
         environment:
             - VIRTUAL_HOST=${TARGET_HOST}
             - VIRTUAL_PORT=80

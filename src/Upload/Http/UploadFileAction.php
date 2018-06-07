@@ -5,9 +5,9 @@ namespace App\Upload\Http;
 
 use App\Core\Doctrine\Flush;
 use App\Core\Http\Annotation\ResponseGroups;
-use App\Upload\File;
-use App\Upload\Files;
-use App\Upload\FileSaver;
+use App\Upload\Entity\FileReference;
+use App\Upload\Entity\Files;
+use App\Upload\Entity\FileSaver;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -17,35 +17,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class UploadFileAction
 {
     /**
-     * @var Files
-     */
-    private $files;
-
-    /**
-     * @var FileSaver
-     */
-    private $saver;
-
-    public function __construct(Files $files, FileSaver $saver)
-    {
-        $this->files = $files;
-        $this->saver = $saver;
-    }
-
-    /**
      * @Method({"POST"})
      * @Route("/upload")
      * @ResponseGroups({"api_file"})
      *
      * @param UploadFileRequest $request
-     * @return File
+     * @param Files $files
+     * @param FileSaver $saver
+     * @param Flush $flush
+     * @return FileReference
      */
-    public function __invoke(UploadFileRequest $request, Flush $flush): File
+    public function __invoke(UploadFileRequest $request, Files $files, FileSaver $saver, Flush $flush): FileReference
     {
-        $file = $this->saver->save($request->file);
+        $file = $saver->save($request->file);
 
-        $this->files->add($file);
-
+        $files->add($file);
         $flush();
 
         return $file;

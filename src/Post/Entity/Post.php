@@ -32,7 +32,7 @@ class Post
     private $description;
 
     /**
-     * @var
+     * @var Media
      * @ORM\Embedded(class="App\Post\Entity\Media")
      *
      * @Groups({"api_post"})

@@ -30,7 +30,7 @@ class NativeQueryCursor extends AbstractCursor
     private $originalItemsSql;
 
     /**
-     * @param AbstractQuery|NativeQuery $itemsQuery Items native db query
+     * @param NativeQuery $itemsQuery Items native db query
      * @param AbstractQuery $countQuery Items count query
      */
     public function __construct(NativeQuery $itemsQuery, AbstractQuery $countQuery)

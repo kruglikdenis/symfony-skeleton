@@ -5,7 +5,8 @@ parameters:
 
 imports:
     - { resource: ./../../src/Security/Resources/config/services.yaml }
-    - { resource: ./../../src/Upload/Resources/config/services.yaml }
+    - { resource: ./services/upload.yaml }
+    - { resource: ./actions/upload.yaml }
     - { resource: ./../../src/User/Resources/config/services.yaml }
     - { resource: ./../../src/Post/Resources/config/services.yaml }
     - { resource: ./../../src/Report/Resources/services.yaml }

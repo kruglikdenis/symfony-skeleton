@@ -6,4 +6,3 @@ services:
         tags: [ "controller.service_arguments" ]
 
     App\Upload\Http\UploadFileAction:
-    App\Upload\Http\RetrieveFileAction:

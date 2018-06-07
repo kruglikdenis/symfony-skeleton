@@ -51,7 +51,7 @@ class PostBuilder
     }
 
     /**
-     * @param $id
+     * @param string $id
      *
      * @return PostBuilder
      */

@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\Upload\Entity\Files: '@App\Upload\Entity\FileRepository'
+    App\Upload\Entity\FileSaver: '@App\Upload\Service\FlysystemSaver'
+    App\Upload\Entity\FileUrlGenerator: '@App\Upload\Service\LocalFileUrlGenerator'
+
+    League\Flysystem\AdapterInterface: '@oneup_flysystem.local_adapter_adapter'
+    League\Flysystem\FilesystemInterface: '@oneup_flysystem.local_filesystem'
+
+    App\Upload\Entity\FileRepository:
+    App\Upload\Service\FlysystemSaver:
+    App\Upload\Service\LocalFileUrlGenerator:

@@ -4,6 +4,8 @@ services:
 
     php:
         image: ${REGISTRY_URL}${REPOSITORY_NAME}php:${DOCKER_TAG}
+        depends_on:
+            - database
         build:
             context: './../'
             dockerfile: 'docker/php/Dockerfile'

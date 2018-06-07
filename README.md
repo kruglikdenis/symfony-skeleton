@@ -45,6 +45,7 @@ console                     # symfony console running via docker container
 psql                        # connects psql to your database using containers
 composer                    # shortcut for running composer (with php7 in separate docker container)
 php_stan                    # shortcut for running PHPstan (Static Analysis Tool)
+run_tests                   # shortcut for running tests
 ```
 
 ## Development

@@ -4,10 +4,8 @@ namespace App\Upload\Http;
 
 
 use App\Core\Http\Annotation\ResponseGroups;
+use App\Core\Service\Dispatcher;
 use App\Core\Service\Flusher;
-use App\Upload\Entity\FileReference;
-use App\Upload\Entity\Files;
-use App\Upload\Entity\FileSaver;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -22,18 +20,15 @@ class UploadFileAction
      * @ResponseGroups({"api_file"})
      *
      * @param UploadFileRequest $request
-     * @param Files $files
-     * @param FileSaver $saver
+     * @param Dispatcher $dispatcher
      * @param Flusher $flusher
-     * @return FileReference
      */
-    public function __invoke(UploadFileRequest $request, Files $files, FileSaver $saver, Flusher $flusher): FileReference
+    public function __invoke(UploadFileRequest $request, Dispatcher $dispatcher, Flusher $flusher)
     {
-        $file = $saver->save($request->file);
+        $dispatcher->dispatch(
+            new UploadCommand($request->file)
+        );
 
-        $files->add($file);
         $flusher->flush();
-
-        return $file;
     }
 }

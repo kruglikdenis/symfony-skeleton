@@ -1,6 +1,3 @@
-imports:
-    - { resource: ./actions.yaml }
-
 services:
     _defaults:
         autowire: true
@@ -15,3 +12,6 @@ services:
         arguments:
             - '@App\Post\Service\TextTagExtractor'
     App\Post\Entity\PostRepository:
+
+    App\Post\Handler\AddPostHandler:
+        tags: [ 'broadway.command_handler' ]

@@ -4,9 +4,9 @@ namespace App\Upload\Http;
 
 
 use App\Core\Http\RequestObject;
-use App\Upload\Validation\DefaultConstraintCreator;
-use App\Upload\Validation\ImageConstraintCreator;
-use App\Upload\Validation\ValidationConstraintFactory;
+use App\Upload\Http\Validation\DefaultConstraintCreator;
+use App\Upload\Http\Validation\ImageConstraintCreator;
+use App\Upload\Http\Validation\ValidationConstraintFactory;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;

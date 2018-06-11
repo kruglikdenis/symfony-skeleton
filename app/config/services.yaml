@@ -9,7 +9,8 @@ imports:
     - { resource: ./actions/upload.yaml }
     - { resource: ./services/user.yaml }
     - { resource: ./actions/user.yaml }
-    - { resource: ./../../src/Post/Resources/config/services.yaml }
+    - { resource: ./services/post.yaml }
+    - { resource: ./actions/post.yaml }
     - { resource: ./../../src/Report/Resources/services.yaml }
 
 services:

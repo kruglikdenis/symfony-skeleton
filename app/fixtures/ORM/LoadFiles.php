@@ -26,7 +26,7 @@ class LoadFiles extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         foreach (range(1, self::FIXTURES_COUNT) as $i) {
-            $file = new UploadedFile('/app/app/fixtures/files/avatar.png', $this->faker->word, 'image/png');
+            $file = new UploadedFile('/app/app/fixtures/files/avatar.png', "{$this->faker->word}.png", 'image/png');
             $reference = $this->saver->save($file);
 
             $this->setReference("file-{$i}", $reference);

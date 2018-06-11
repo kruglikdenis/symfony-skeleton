@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Upload\Validation;
+namespace App\Upload\Http\Validation;
 
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;

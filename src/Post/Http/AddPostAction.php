@@ -5,10 +5,8 @@ namespace App\Post\Http;
 
 use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
+use App\Core\Service\Dispatcher;
 use App\Core\Service\Flusher;
-use App\Post\Entity\Post;
-use App\Post\Entity\Posts;
-use App\Post\Entity\TagExtractor;
 use App\Security\Entity\Credential;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -19,22 +17,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class AddPostAction
 {
     /**
-     * @var Posts
-     */
-    private $posts;
-
-    /**
-     * @var TagExtractor
-     */
-    private $tagExtractor;
-
-    public function __construct(Posts $posts, TagExtractor $tagExtractor)
-    {
-        $this->posts = $posts;
-        $this->tagExtractor = $tagExtractor;
-    }
-
-    /**
      * @Method({"POST"})
      * @ResponseGroups({"api_post"})
      * @ResponseCode(201)
@@ -42,21 +24,14 @@ class AddPostAction
      * @param AddPostRequest $request
      * @param Credential $credential
      * @param Flusher $flusher
-     *
-     * @return Post
+     * @param Dispatcher $dispatcher
      */
-    public function __invoke(AddPostRequest $request, Credential $credential, Flusher $flusher)
+    public function __invoke(AddPostRequest $request, Credential $credential, Dispatcher $dispatcher, Flusher $flusher)
     {
-        $post = Post::builder()
-            ->setAuthor($credential->id())
-            ->setDescription($request->description, $this->tagExtractor)
-            ->setMedia($request->media)
-            ->build();
-
-        $this->posts->add($post);
+        $dispatcher->dispatch(
+            new AddPostCommand($request, $credential->id())
+        );
 
         $flusher->flush();
-
-        return $post;
     }
 }

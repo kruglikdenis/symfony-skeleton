@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Core\Doctrine;
+namespace App\Core\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-class Flush
+class Flusher
 {
     /**
      * @var EntityManagerInterface
@@ -16,8 +16,10 @@ class Flush
         $this->em = $em;
     }
 
-    public function __invoke(): void
+    public function flush(): void
     {
         $this->em->flush();
     }
+
+
 }

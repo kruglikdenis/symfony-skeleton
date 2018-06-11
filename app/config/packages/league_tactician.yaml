@@ -1,7 +1,0 @@
-tactician:
-    commandbus:
-        default:
-            middleware:
-                - tactician_domain_events.middleware.release_recorded_events
-                - tactician.middleware.doctrine
-                - tactician.middleware.command_handler

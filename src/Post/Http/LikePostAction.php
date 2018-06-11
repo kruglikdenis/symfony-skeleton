@@ -3,7 +3,7 @@
 namespace App\Post\Http;
 
 
-use App\Core\Doctrine\Flush;
+use App\Core\Service\Flusher;
 use App\Post\Entity\Post;
 use App\Post\Entity\Posts;
 use App\Post\Entity\User;
@@ -41,11 +41,11 @@ class LikePostAction
      * @param Post $post
      * @param Credential $credential
      */
-    public function __invoke(Post $post, Credential $credential, Flush $flush)
+    public function __invoke(Post $post, Credential $credential, Flusher $flusher)
     {
         $liker = new User($credential->id());
         $post->like($liker);
 
-        $flush();
+        $flusher->flush();
     }
 }

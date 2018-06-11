@@ -3,8 +3,8 @@
 namespace App\Upload\Http;
 
 
-use App\Core\Doctrine\Flush;
 use App\Core\Http\Annotation\ResponseGroups;
+use App\Core\Service\Flusher;
 use App\Upload\Entity\FileReference;
 use App\Upload\Entity\Files;
 use App\Upload\Entity\FileSaver;
@@ -24,15 +24,15 @@ class UploadFileAction
      * @param UploadFileRequest $request
      * @param Files $files
      * @param FileSaver $saver
-     * @param Flush $flush
+     * @param Flusher $flusher
      * @return FileReference
      */
-    public function __invoke(UploadFileRequest $request, Files $files, FileSaver $saver, Flush $flush): FileReference
+    public function __invoke(UploadFileRequest $request, Files $files, FileSaver $saver, Flusher $flusher): FileReference
     {
         $file = $saver->save($request->file);
 
         $files->add($file);
-        $flush();
+        $flusher->flush();
 
         return $file;
     }

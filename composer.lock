@@ -4,141 +4,266 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7147a0190b3b03cf1581347dc1b6ce6",
+    "content-hash": "c6bb7901022b66cf9a9840e10acd0e25",
     "packages": [
         {
-            "name": "bornfree/tactician-doctrine-domain-events",
+            "name": "beberlei/assert",
+            "version": "v2.9.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "c07fe163d6a3b3e4b1275981ec004397954afa89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/c07fe163d6a3b3e4b1275981ec004397954afa89",
+                "reference": "c07fe163d6a3b3e4b1275981ec004397954afa89",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.1.1",
+                "phpunit/phpunit": "^4.8.35|^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Assert\\": "lib/Assert"
+                },
+                "files": [
+                    "lib/Assert/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "time": "2018-04-16T11:18:27+00:00"
+        },
+        {
+            "name": "broadway/broadway",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/broadway/broadway.git",
+                "reference": "fda54df3e470b9d33b38faeaffaebd38687b0497"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/broadway/broadway/zipball/fda54df3e470b9d33b38faeaffaebd38687b0497",
+                "reference": "fda54df3e470b9d33b38faeaffaebd38687b0497",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "~2.0",
+                "broadway/uuid-generator": "~0.4.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "instaclick/base-test-bundle": "~0.5",
+                "monolog/monolog": "~1.8",
+                "phpunit/phpunit": "^6.0",
+                "ramsey/uuid": "^3.0"
+            },
+            "suggest": {
+                "broadway/broadway-bundle": "Symfony bundle for broadway/broadway",
+                "broadway/broadway-saga": "Saga component for Broadway",
+                "broadway/event-store-dbal": "Event store implementation using doctrine/dbal",
+                "broadway/read-model-elasticsearch": "Elasticsearch read model implementation",
+                "psr/log-implementation": "Implementation for PSR3, LoggerInterface"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Broadway\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "othillo",
+                    "email": "othillo@othillo.nl"
+                },
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                },
+                {
+                    "name": "Qandidate.com",
+                    "homepage": "http://labs.qandidate.com/"
+                },
+                {
+                    "name": "Willem-Jan",
+                    "email": "wjzijderveld@gmail.com"
+                },
+                {
+                    "name": "Emil",
+                    "email": "emil@broekmeulen.com"
+                },
+                {
+                    "name": "Fritsjan",
+                    "email": "fritsjan@qandidate.com"
+                }
+            ],
+            "description": "Infrastructure and testing helpers for creating CQRS and event sourced applications.",
+            "keywords": [
+                "cqrs",
+                "ddd",
+                "domain-driven design",
+                "event sourcing"
+            ],
+            "time": "2017-12-16T10:26:26+00:00"
+        },
+        {
+            "name": "broadway/broadway-bundle",
+            "version": "0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/broadway/broadway-bundle.git",
+                "reference": "0687d1ff258df0b55ce4add0a9c5a0253572455a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/broadway/broadway-bundle/zipball/0687d1ff258df0b55ce4add0a9c5a0253572455a",
+                "reference": "0687d1ff258df0b55ce4add0a9c5a0253572455a",
+                "shasum": ""
+            },
+            "require": {
+                "broadway/broadway": "^2.0",
+                "php": ">=7.0",
+                "symfony/console": "^2.3||^3.0||^4.0",
+                "symfony/http-kernel": "^2.3||^3.0||^4.0"
+            },
+            "require-dev": {
+                "broadway/broadway-saga": "^0.3",
+                "matthiasnoback/symfony-config-test": "^2.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^1.1",
+                "monolog/monolog": "~1.8",
+                "phpunit/phpunit": "^4.8||^5.0",
+                "symfony/framework-bundle": "^2.3||^3.0||^4.0",
+                "symfony/proxy-manager-bridge": "^2.3||^3.0||^4.0"
+            },
+            "suggest": {
+                "broadway/event-store-dbal": "Event store implementation using doctrine/dbal",
+                "broadway/read-model-elasticsearch": "Elasticsearch read model implementation using elastic/elasticsearch-php",
+                "psr/log-implementation": "Implementation for PSR3, LoggerInterface"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Broadway\\Bundle\\BroadwayBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "othillo",
+                    "email": "othillo@othillo.nl"
+                },
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                },
+                {
+                    "name": "Qandidate.com",
+                    "homepage": "http://labs.qandidate.com/"
+                },
+                {
+                    "name": "Willem-Jan",
+                    "email": "wjzijderveld@gmail.com"
+                },
+                {
+                    "name": "Emil",
+                    "email": "emil@broekmeulen.com"
+                },
+                {
+                    "name": "Fritsjan",
+                    "email": "fritsjan@qandidate.com"
+                }
+            ],
+            "description": "Symfony bundle for broadway/broadway.",
+            "keywords": [
+                "cqrs",
+                "ddd",
+                "domain-driven design",
+                "event sourcing"
+            ],
+            "time": "2017-12-11T16:52:13+00:00"
+        },
+        {
+            "name": "broadway/uuid-generator",
             "version": "0.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/borNfreee/tactician-doctrine-domain-events.git",
-                "reference": "97ce03487fbc9eb64e12f85f921f3b9e91064d17"
+                "url": "https://github.com/broadway/broadway-uuid-generator.git",
+                "reference": "3c5307e62975113d370d18d36c9fcd792b21032a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/borNfreee/tactician-doctrine-domain-events/zipball/97ce03487fbc9eb64e12f85f921f3b9e91064d17",
-                "reference": "97ce03487fbc9eb64e12f85f921f3b9e91064d17",
+                "url": "https://api.github.com/repos/broadway/broadway-uuid-generator/zipball/3c5307e62975113d370d18d36c9fcd792b21032a",
+                "reference": "3c5307e62975113d370d18d36c9fcd792b21032a",
                 "shasum": ""
             },
             "require": {
-                "bornfreee/tactician-domain-events": "^0.3.0",
-                "doctrine/orm": "^2.2",
-                "php": ">=5.4"
+                "php": ">=5.5.9"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7"
+                "phpunit/phpunit": "^4.8",
+                "ramsey/uuid": "^3.0"
+            },
+            "suggest": {
+                "ramsey/uuid": "Allows creating UUIDs"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "BornFree\\TacticianDoctrineDomainEvent\\": "src/"
+                    "Broadway\\UuidGenerator\\": "src/Broadway/UuidGenerator"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Maks Rafalko",
-                    "email": "maks.rafalko@gmail.com",
-                    "role": "Author"
-                }
-            ],
-            "description": "The bridge to provide Domain Events handling with Tactician command bus and Doctrine ORM",
-            "time": "2017-11-19T20:50:31+00:00"
-        },
-        {
-            "name": "bornfreee/tactician-domain-events",
-            "version": "0.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/borNfreee/tactician-domain-events.git",
-                "reference": "993bb59b4681a30072b51cbb22bb9f037ed1bf62"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/borNfreee/tactician-domain-events/zipball/993bb59b4681a30072b51cbb22bb9f037ed1bf62",
-                "reference": "993bb59b4681a30072b51cbb22bb9f037ed1bf62",
-                "shasum": ""
-            },
-            "require": {
-                "league/tactician": "^1.0",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "BornFree\\TacticianDomainEvent\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maks Rafalko (borN_free)",
-                    "email": "maks.rafalko@gmail.com",
-                    "role": "Author"
-                }
-            ],
-            "description": "A Plugin for Tactician command bus library to work with the recorded Domain Events",
-            "time": "2017-06-07T21:10:35+00:00"
-        },
-        {
-            "name": "bornfreee/tactician-domain-events-bundle",
-            "version": "0.5.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/borNfreee/tactician-domain-events-bundle.git",
-                "reference": "5f0b4485889d58660a90d27c18cdaa76be19a877"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/borNfreee/tactician-domain-events-bundle/zipball/5f0b4485889d58660a90d27c18cdaa76be19a877",
-                "reference": "5f0b4485889d58660a90d27c18cdaa76be19a877",
-                "shasum": ""
-            },
-            "require": {
-                "bornfree/tactician-doctrine-domain-events": "^0.4.0",
-                "php": ">=5.5",
-                "symfony/config": "^2.8|^3.0|^4.0",
-                "symfony/dependency-injection": "^2.8|^3.0|^4.0",
-                "symfony/http-kernel": "^2.8|^3.0|^4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "BornFree\\TacticianDomainEventBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maks Rafalko",
-                    "email": "maks.rafalko@gmail.com",
-                    "role": "Author"
-                }
-            ],
-            "description": "Bundle to integrate Tactician Domain Events library with Symfony project",
-            "keywords": [
-                "bundle",
-                "domain",
-                "events",
-                "symfony",
-                "tactician"
-            ],
-            "time": "2018-03-12T20:24:08+00:00"
+            "description": "UUID generator for broadway/broadway.",
+            "time": "2016-12-14T10:47:27+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -424,16 +549,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.6.3",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "e3eed9b1facbb0ced3a0995244843a189e7d1b13"
+                "reference": "11037b4352c008373561dc6fc836834eed80c3b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/e3eed9b1facbb0ced3a0995244843a189e7d1b13",
-                "reference": "e3eed9b1facbb0ced3a0995244843a189e7d1b13",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/11037b4352c008373561dc6fc836834eed80c3b5",
+                "reference": "11037b4352c008373561dc6fc836834eed80c3b5",
                 "shasum": ""
             },
             "require": {
@@ -442,9 +567,11 @@
                 "php": "^7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.4.6",
+                "doctrine/coding-standard": "^4.0",
+                "phpunit/phpunit": "^7.0",
                 "phpunit/phpunit-mock-objects": "!=3.2.4,!=3.2.5",
-                "symfony/console": "2.*||^3.0"
+                "symfony/console": "^2.0.5||^3.0",
+                "symfony/phpunit-bridge": "^3.4.5|^4.0.5"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
@@ -455,7 +582,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6.x-dev"
+                    "dev-master": "2.7.x-dev"
                 }
             },
             "autoload": {
@@ -493,7 +620,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-11-19T13:38:54+00:00"
+            "time": "2018-04-07T18:44:18+00:00"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -978,38 +1105,40 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.5.13",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "93103f44a3e36e7b48165b6e6b736833f33b18ef"
+                "reference": "87ee409783a4a322b5597ebaae558661404055a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/93103f44a3e36e7b48165b6e6b736833f33b18ef",
-                "reference": "93103f44a3e36e7b48165b6e6b736833f33b18ef",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/87ee409783a4a322b5597ebaae558661404055a7",
+                "reference": "87ee409783a4a322b5597ebaae558661404055a7",
                 "shasum": ""
             },
             "require": {
-                "doctrine/cache": "~1.4",
-                "doctrine/collections": "~1.2",
-                "doctrine/common": ">=2.5-dev,<2.9-dev",
-                "doctrine/dbal": ">=2.5-dev,<2.7-dev",
-                "doctrine/instantiator": "^1.0.1",
+                "doctrine/annotations": "~1.5",
+                "doctrine/cache": "~1.6",
+                "doctrine/collections": "^1.4",
+                "doctrine/common": "^2.7.1",
+                "doctrine/dbal": "^2.6",
+                "doctrine/instantiator": "~1.1",
                 "ext-pdo": "*",
-                "php": ">=5.4",
-                "symfony/console": "~2.5|~3.0|~4.0"
+                "php": "^7.1",
+                "symfony/console": "~3.0|~4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "symfony/yaml": "~2.3|~3.0|~4.0"
+                "doctrine/coding-standard": "^1.0",
+                "phpunit/phpunit": "^6.5",
+                "squizlabs/php_codesniffer": "^3.2",
+                "symfony/yaml": "~3.4|~4.0"
             },
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
             "bin": [
-                "bin/doctrine",
-                "bin/doctrine.php"
+                "bin/doctrine"
             ],
             "type": "library",
             "extra": {
@@ -1018,8 +1147,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\ORM\\": "lib/"
+                "psr-4": {
+                    "Doctrine\\ORM\\": "lib/Doctrine/ORM"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1042,6 +1171,10 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com"
                 }
             ],
             "description": "Object-Relational-Mapper for PHP",
@@ -1050,7 +1183,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-11-27T23:25:55+00:00"
+            "time": "2018-02-27T07:30:56+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1108,6 +1241,49 @@
                 "validator"
             ],
             "time": "2017-11-15T23:40:40+00:00"
+        },
+        {
+            "name": "fesor/domain-events",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fesor/domain-events.git",
+                "reference": "5fd51a0e6a2d1400225d72f150cc5598b95f6e5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fesor/domain-events/zipball/5fd51a0e6a2d1400225d72f150cc5598b95f6e5c",
+                "reference": "5fd51a0e6a2d1400225d72f150cc5598b95f6e5c",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.9",
+                "phpspec/phpspec": "^2.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fesor\\DomainEvents\\": "src/",
+                    "spec\\Fesor\\DomainEvents\\": "spec/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Protko",
+                    "email": "fesors@gmail.com"
+                }
+            ],
+            "description": "Simple domain events implementation",
+            "time": "2015-06-26T21:22:30+00:00"
         },
         {
             "name": "fesor/request-objects",
@@ -8905,6 +9081,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "fesor/domain-events": 20,
         "symfony/lts": 20
     },
     "prefer-stable": false,

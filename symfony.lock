@@ -1,15 +1,24 @@
 {
+    "beberlei/assert": {
+        "version": "v2.9.5"
+    },
     "behat/gherkin": {
         "version": "v4.5.1"
     },
-    "bornfree/tactician-doctrine-domain-events": {
+    "broadway/broadway": {
+        "version": "2.0.1"
+    },
+    "broadway/broadway-bundle": {
+        "version": "0.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.4",
+            "ref": "a4ded8381c60e594474584599659eef9d931c872"
+        }
+    },
+    "broadway/uuid-generator": {
         "version": "0.4.0"
-    },
-    "bornfreee/tactician-domain-events": {
-        "version": "0.3.1"
-    },
-    "bornfreee/tactician-domain-events-bundle": {
-        "version": "0.5.3"
     },
     "codeception/codeception": {
         "version": "2.4.0"
@@ -100,6 +109,9 @@
     },
     "facebook/webdriver": {
         "version": "1.2.0"
+    },
+    "fesor/domain-events": {
+        "version": "1.0.x-dev"
     },
     "fesor/request-objects": {
         "version": "v0.3.0"

@@ -3,9 +3,9 @@
 namespace App\Post\Http;
 
 
-use App\Core\Doctrine\Flush;
 use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
+use App\Core\Service\Flusher;
 use App\Post\Entity\Post;
 use App\Post\Entity\Posts;
 use App\Post\Entity\TagExtractor;
@@ -41,11 +41,11 @@ class AddPostAction
      *
      * @param AddPostRequest $request
      * @param Credential $credential
-     * @param Flush $flush
+     * @param Flusher $flusher
      *
      * @return Post
      */
-    public function __invoke(AddPostRequest $request, Credential $credential, Flush $flush)
+    public function __invoke(AddPostRequest $request, Credential $credential, Flusher $flusher)
     {
         $post = Post::builder()
             ->setAuthor($credential->id())
@@ -55,7 +55,7 @@ class AddPostAction
 
         $this->posts->add($post);
 
-        $flush();
+        $flusher->flush();
 
         return $post;
     }

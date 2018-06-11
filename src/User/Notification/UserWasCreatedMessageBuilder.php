@@ -8,9 +8,9 @@ use App\User\Entity\UserWasCreated;
 
 class UserWasCreatedMessageBuilder
 {
-    public const SUBJECT = 'Registration';
+    private const SUBJECT = 'Registration';
 
-    public const TEMPLATE = 'registration.html.twig';
+    private const TEMPLATE = 'registration.html.twig';
 
     public static function build(UserWasCreated $event)
     {

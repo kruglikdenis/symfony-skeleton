@@ -7,7 +7,8 @@ imports:
     - { resource: ./../../src/Security/Resources/config/services.yaml }
     - { resource: ./services/upload.yaml }
     - { resource: ./actions/upload.yaml }
-    - { resource: ./../../src/User/Resources/config/services.yaml }
+    - { resource: ./services/user.yaml }
+    - { resource: ./actions/user.yaml }
     - { resource: ./../../src/Post/Resources/config/services.yaml }
     - { resource: ./../../src/Report/Resources/services.yaml }
 
@@ -20,6 +21,7 @@ services:
 
     Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface: '@serializer.mapping.class_metadata_factory'
     Symfony\Component\Serializer\NameConverter\NameConverterInterface: '@serializer.name_converter.camel_case_to_snake_case'
+    Broadway\CommandHandling\CommandBus: '@broadway.command_handling.simple_command_bus'
 
     request_annotation_resolver:
         class: 'App\Core\Http\Annotation\HttpAnnotationResolver'
@@ -32,7 +34,10 @@ services:
         resource: '../fixtures/ORM'
         tags: ['doctrine.fixture.orm']
 
-    App\Core\Doctrine\Flush:
+    App\Core\Service\Dispatcher:
+        public: true
+
+    App\Core\Service\Flusher:
         public: true
 
     App\Core\Doctrine\MigrationEventSubscriber:

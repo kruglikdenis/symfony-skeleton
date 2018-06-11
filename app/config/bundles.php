@@ -16,6 +16,5 @@ return [
     Fesor\RequestObject\Bundle\RequestObjectBundle::class => ['all' => true],
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
     Oneup\FlysystemBundle\OneupFlysystemBundle::class => ['all' => true],
-    League\Tactician\Bundle\TacticianBundle::class => ['all' => true],
-    BornFree\TacticianDomainEventBundle\TacticianDomainEventBundle::class => ['all' => true],
+    Broadway\Bundle\BroadwayBundle\BroadwayBundle::class => ['all' => true]
 ];

@@ -19,12 +19,5 @@ api_upload:
     defaults:
         _format: json
 
-api_report:
-    resource: ../src/Report/Http/
-    type: annotation
-    prefix: /api
-    defaults:
-        _format: json
-
 api_login:
     path: /api/login

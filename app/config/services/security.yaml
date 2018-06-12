@@ -8,7 +8,4 @@ services:
 
     App\Security\Entity\CredentialRepository:
     App\Security\CredentialsProvider:
-    App\Security\CredentialValueResolver:
-        tags:
-            - { name: controller.argument_value_resolver, priority: 1000 }
 

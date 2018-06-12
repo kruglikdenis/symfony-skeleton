@@ -12,6 +12,9 @@ services:
         arguments:
             - '@App\Post\Service\TextTagExtractor'
     App\Post\Entity\PostRepository:
+    App\Post\Http\Transformer\LikeTransformer:
 
     App\Post\Handler\AddPostHandler:
+        tags: [ 'broadway.command_handler' ]
+    App\Post\Handler\LikePostHandler:
         tags: [ 'broadway.command_handler' ]

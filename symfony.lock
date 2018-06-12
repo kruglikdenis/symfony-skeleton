@@ -161,6 +161,9 @@
     "league/flysystem": {
         "version": "1.0.43"
     },
+    "league/fractal": {
+        "version": "0.17.0"
+    },
     "league/tactician": {
         "version": "v1.0.3"
     },

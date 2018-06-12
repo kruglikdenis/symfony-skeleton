@@ -6,7 +6,6 @@ use App\Core\Entity\UUIDTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Post\Entity\PostRepository")
@@ -19,32 +18,24 @@ class Post
     /**
      * @var User
      * @ORM\Embedded(class="App\Post\Entity\User")
-     *
-     * @Groups({"api_post"})
      */
     private $author;
 
     /**
      * @var string
      * @ORM\Column(type="string")
-     *
-     * @Groups({"api_post"})
      */
     private $description;
 
     /**
      * @var Media
      * @ORM\Embedded(class="App\Post\Entity\Media")
-     *
-     * @Groups({"api_post"})
      */
     private $media;
 
     /**
      * @var ArrayCollection|Tag[]
      * @ORM\ManyToMany(targetEntity="App\Post\Entity\Tag", cascade={"persist"})
-     *
-     * @Groups({"api_post"})
      */
     private $tags;
 
@@ -78,7 +69,7 @@ class Post
     public function addLike(User $liker)
     {
         $likes = $this->likes->matching(
-            Criteria::create()->where(Criteria::expr()->eq('liker', $liker))
+            Criteria::create()->where(Criteria::expr()->eq('liker.userId', (string) $liker))
         );
 
         if (0 === $likes->count()) {

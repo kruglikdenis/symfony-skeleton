@@ -11,7 +11,6 @@ imports:
     - { resource: ./actions/user.yaml }
     - { resource: ./services/post.yaml }
     - { resource: ./actions/post.yaml }
-    - { resource: ./../../src/Report/Resources/services.yaml }
 
 services:
     # default configuration for services in *this* file
@@ -24,8 +23,9 @@ services:
     Symfony\Component\Serializer\NameConverter\NameConverterInterface: '@serializer.name_converter.camel_case_to_snake_case'
     Broadway\CommandHandling\CommandBus: '@broadway.command_handling.simple_command_bus'
 
-    request_annotation_resolver:
-        class: 'App\Core\Http\Annotation\HttpAnnotationResolver'
+    App\Core\Http\DataArraySerializer:
+
+    App\Core\Http\Annotation\HttpAnnotationResolver:
         public: true
         arguments:
             - '@controller_resolver'
@@ -41,6 +41,9 @@ services:
     App\Core\Service\Flusher:
         public: true
 
+    App\Core\Http\Presenter:
+        public: true
+
     App\Core\Doctrine\MigrationEventSubscriber:
         tags:
             - { name: doctrine.event_subscriber, connection: 'default' }
@@ -51,27 +54,16 @@ services:
 
     App\Core\EventListener\KernelViewListener:
         arguments:
-            - '@serializer'
-            - '@request_annotation_resolver'
+            - '@service_container'
+            - '@App\Core\Http\Presenter'
+            - '@App\Core\Http\Annotation\HttpAnnotationResolver'
         tags:
             - { name: kernel.event_listener, event: kernel.view }
-
-    App\Core\Http\PaginatorValueResolver:
-        tags:
-            - { name: controller.argument_value_resolver, priority: 1000 }
 
     App\Core\EventListener\DomainExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }
 
-    Symfony\Component\Serializer\Normalizer\PropertyNormalizer:
-        tags: [ serializer.normalizer ]
-
-    App\Core\Normalizer\CollectionNormalizer:
-        tags: [ serializer.normalizer ]
-
-    App\Core\Normalizer\CursorNormalizer:
-        tags: [ serializer.normalizer ]
-
-    App\Core\Normalizer\StringableObjectsNormalizer:
-        tags: [ serializer.normalizer ]
+    App\Core\Http\ParamConverter\PaginationParamConverter:
+        tags:
+            - { name: 'request.param_converter', priority: -2, converter: 'pagination' }

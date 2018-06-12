@@ -25,5 +25,7 @@ class LikePostHandler extends SimpleCommandHandler
         $post = $this->posts->retrieveById($command->postId());
 
         $post->addLike(new User($command->likerId()));
+
+        $command->withPayload($post);
     }
 }

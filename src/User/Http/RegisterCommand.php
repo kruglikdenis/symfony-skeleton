@@ -3,8 +3,12 @@
 namespace App\User\Http;
 
 
+use App\Core\Http\CommandPayloadTrait;
+
 class RegisterCommand
 {
+    use CommandPayloadTrait;
+
     /**
      * @var RegisterRequest
      */

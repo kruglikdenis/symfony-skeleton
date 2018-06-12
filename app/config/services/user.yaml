@@ -6,6 +6,8 @@ services:
 
     App\User\Entity\Users: '@App\User\Entity\UserRepository'
 
+    App\User\Http\Transformer\UserTransformer:
+
     App\User\Entity\UserRepository:
     App\User\Handler\RegisterHandler:
         tags: [ 'broadway.command_handler' ]

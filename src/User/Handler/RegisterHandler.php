@@ -38,5 +38,7 @@ class RegisterHandler extends SimpleCommandHandler
             ->build();
 
         $this->users->add($user);
+
+        $command->withPayload($user);
     }
 }

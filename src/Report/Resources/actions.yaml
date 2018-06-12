@@ -1,2 +1,0 @@
-services:
-    App\Report\Http\GetUserLikeReportAction:

@@ -3,7 +3,6 @@
 namespace App\Upload\Http;
 
 
-use App\Core\Http\Annotation\ResponseGroups;
 use App\Core\Service\Dispatcher;
 use App\Core\Service\Flusher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -18,7 +17,6 @@ class UploadFileAction extends Controller
     /**
      * @Method({"POST"})
      * @Route("/upload")
-     * @ResponseGroups({"api_file"})
      *
      * @param UploadFileRequest $request
      * @param Dispatcher $dispatcher

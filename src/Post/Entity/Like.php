@@ -4,7 +4,6 @@ namespace App\Post\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity()
@@ -15,8 +14,6 @@ class Like
     /**
      * @ORM\Id
      * @ORM\Column(type="guid")
-     *
-     * @Groups({"api_post"})
      */
     private $id;
 

@@ -3,8 +3,12 @@
 namespace App\Post\Http\Command;
 
 
+use App\Core\Http\CommandPayloadTrait;
+
 class LikePostCommand
 {
+    use CommandPayloadTrait;
+
     /**
      * @var string
      */

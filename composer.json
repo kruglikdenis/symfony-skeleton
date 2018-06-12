@@ -25,6 +25,7 @@
         "fesor/request-objects": "^0.3.0",
         "gpslab/domain-event-bundle": "^2.1",
         "happyr/doctrine-specification": "^0.7.2",
+        "league/fractal": "^0.17.0",
         "league/tactician-bundle": "^1.1",
         "league/tactician-doctrine": "^1.1",
         "lexik/jwt-authentication-bundle": "^2.4",

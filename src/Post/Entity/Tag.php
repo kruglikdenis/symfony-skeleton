@@ -4,7 +4,6 @@ namespace App\Post\Entity;
 
 use App\Core\Entity\UUIDTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(readOnly=true)
@@ -17,8 +16,6 @@ class Tag
     /**
      * @var string
      * @ORM\Column(type="string")
-     *
-     * @Groups({"api_post"})
      */
     private $tag;
 

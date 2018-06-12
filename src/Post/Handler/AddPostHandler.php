@@ -6,7 +6,7 @@ namespace App\Post\Handler;
 use App\Post\Entity\Post;
 use App\Post\Entity\Posts;
 use App\Post\Entity\TagExtractor;
-use App\Post\Http\AddPostCommand;
+use App\Post\Http\Command\AddPostCommand;
 use Broadway\CommandHandling\SimpleCommandHandler;
 
 class AddPostHandler extends SimpleCommandHandler

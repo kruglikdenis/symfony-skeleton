@@ -4,6 +4,7 @@ namespace App\Post\Entity;
 
 use App\Core\Entity\UUIDTrait;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -70,13 +71,19 @@ class Post
     }
 
     /**
-     * Like post
+     * Add like to post
      *
-     * @param User $user
+     * @param User $liker
      */
-    public function like(User $user)
+    public function addLike(User $liker)
     {
-        $this->likes->add(new Like($this, $user));
+        $likes = $this->likes->matching(
+            Criteria::create()->where(Criteria::expr()->eq('liker', $liker))
+        );
+
+        if (0 === $likes->count()) {
+            $this->likes->add(new Like($this, $liker));
+        }
     }
 
     /**

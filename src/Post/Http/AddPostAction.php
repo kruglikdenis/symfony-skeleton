@@ -7,14 +7,16 @@ use App\Core\Http\Annotation\ResponseCode;
 use App\Core\Http\Annotation\ResponseGroups;
 use App\Core\Service\Dispatcher;
 use App\Core\Service\Flusher;
+use App\Post\Http\Command\AddPostCommand;
 use App\Security\Entity\Credential;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * @Route("/posts")
  */
-class AddPostAction
+class AddPostAction extends Controller
 {
     /**
      * @Method({"POST"})

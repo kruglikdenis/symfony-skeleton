@@ -4,7 +4,7 @@ parameters:
     locale: 'en'
 
 imports:
-    - { resource: ./../../src/Security/Resources/config/services.yaml }
+    - { resource: ./services/security.yaml }
     - { resource: ./services/upload.yaml }
     - { resource: ./actions/upload.yaml }
     - { resource: ./services/user.yaml }

@@ -3,48 +3,33 @@
 namespace App\Post\Http;
 
 
+use App\Core\Service\Dispatcher;
 use App\Core\Service\Flusher;
-use App\Post\Entity\Post;
-use App\Post\Entity\Posts;
-use App\Post\Entity\User;
+use App\Post\Http\Command\LikePostCommand;
 use App\Security\Entity\Credential;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * @Route("/posts")
  */
-class LikePostAction
+class LikePostAction extends Controller
 {
-    /**
-     * @var Posts
-     */
-    private $posts;
-
-    public function __construct(Posts $posts)
-    {
-        $this->posts = $posts;
-    }
-
     /**
      * @Route("/{id}/like")
      * @Method({"POST"})
-     * @ParamConverter(
-     *     "post",
-     *     class="App\Post\Entity\Post",
-     *     options={
-     *         "repository_method" = "retrieveById"
-     *     }
-     * )
      *
-     * @param Post $post
+     * @param string $id
      * @param Credential $credential
+     * @param Dispatcher $dispatcher
+     * @param Flusher $flusher
      */
-    public function __invoke(Post $post, Credential $credential, Flusher $flusher)
+    public function __invoke(string $id, Credential $credential, Dispatcher $dispatcher, Flusher $flusher)
     {
-        $liker = new User($credential->id());
-        $post->like($liker);
+        $dispatcher->dispatch(
+            new LikePostCommand($id, $credential->id())
+        );
 
         $flusher->flush();
     }

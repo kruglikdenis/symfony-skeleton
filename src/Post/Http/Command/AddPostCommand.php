@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Post\Http;
+namespace App\Post\Http\Command;
 
+
+use App\Post\Http\AddPostRequest;
 
 class AddPostCommand
 {

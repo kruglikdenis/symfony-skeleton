@@ -10,8 +10,9 @@ use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NativeQuery;
 use Doctrine\ORM\Query\ResultSetMapping;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class MostActiveUsersReport
+class MostActiveUsersReport extends Controller
 {
     /**
      * @var EntityManagerInterface

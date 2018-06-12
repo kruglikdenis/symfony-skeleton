@@ -8,11 +8,12 @@ use App\Core\Service\Dispatcher;
 use App\Core\Service\Flusher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * @Route("/files")
  */
-class UploadFileAction
+class UploadFileAction extends Controller
 {
     /**
      * @Method({"POST"})

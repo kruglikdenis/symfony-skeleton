@@ -3,6 +3,8 @@
 namespace App\Core\Entity;
 
 
+use App\Core\Http\FilterCollection;
+use App\Core\Http\Pagination;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -28,5 +30,10 @@ trait RepositoryTrait
     {
         $this->em = $em;
         $this->repository = $em->getRepository($class);
+    }
+
+    public function search(FilterCollection $filters, Pagination $pagination)
+    {
+
     }
 }

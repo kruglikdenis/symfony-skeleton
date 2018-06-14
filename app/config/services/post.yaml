@@ -4,15 +4,18 @@ services:
         autoconfigure: true
         public: true
 
-    App\Post\Entity\Posts: '@App\Post\Entity\PostRepository'
     App\Post\Entity\TagExtractor: '@App\Post\Service\DoctrineTagsExtractor'
 
     App\Post\Service\TextTagExtractor:
     App\Post\Service\DoctrineTagsExtractor:
         arguments:
             - '@App\Post\Service\TextTagExtractor'
-    App\Post\Entity\PostRepository:
+    App\Post\Entity\Posts:
+        tags:
+            - { name: 'app.repository', entity: 'App\Post\Entity\Post' }
+
     App\Post\Http\Transformer\LikeTransformer:
+    App\Post\Http\Transformer\PostTransformer:
 
     App\Post\Handler\AddPostHandler:
         tags: [ 'broadway.command_handler' ]

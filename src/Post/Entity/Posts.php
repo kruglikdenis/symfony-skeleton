@@ -3,20 +3,39 @@
 namespace App\Post\Entity;
 
 
-interface Posts
+use App\Core\Entity\Repository;
+use App\Core\Entity\RepositoryTrait;
+use App\Core\Exception\EntityNotFoundException;
+
+class Posts implements Repository
 {
-    /**
-     * Retrieve post by id
-     *
-     * @param string $id
-     * @return Post
-     */
-    public function retrieveById(string $id): Post;
+    use RepositoryTrait;
 
     /**
-     * Add post
-     *
-     * @param Post $post
+     * @inheritdoc
      */
-    public function add(Post $post): void;
+    public function add(Post $post): void
+    {
+        $this->em->persist($post);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function retrieveById(string $id): Post
+    {
+        $qb = $this->em->createQueryBuilder();
+        $qb->select('p')
+            ->from(Post::class, 'p')
+            ->where('p.id = :id')
+            ->setParameter('id', $id);
+
+        $post = $qb->getQuery()->getOneOrNullResult();
+
+        if (null === $post) {
+            throw new EntityNotFoundException();
+        }
+
+        return $post;
+    }
 }

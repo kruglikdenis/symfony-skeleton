@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Post\Entity\PostRepository")
+ * @ORM\Entity()
  * @ORM\Table(name="posts")
  */
 class Post

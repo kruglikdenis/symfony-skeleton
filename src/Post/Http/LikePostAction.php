@@ -14,7 +14,7 @@ use App\Core\Http\Annotation\ResponseTransformer;
 use App\Post\Http\Transformer\LikeTransformer;
 
 /**
- * @Route("/posts")
+ * @Route("/post")
  */
 class LikePostAction extends Controller
 {

@@ -6,7 +6,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "App\\DataFixture\\": "app/fixtures"
+            "App\\DataFixture\\": "app/fixtures",
+            "App\\DependencyInjection\\": "app/injection"
         },
         "classmap": [
             "app/Kernel.php"

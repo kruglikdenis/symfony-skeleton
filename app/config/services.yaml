@@ -23,6 +23,7 @@ services:
     Symfony\Component\Serializer\NameConverter\NameConverterInterface: '@serializer.name_converter.camel_case_to_snake_case'
     Broadway\CommandHandling\CommandBus: '@broadway.command_handling.simple_command_bus'
 
+    Doctrine\ORM\EntityManager:
     App\Core\Http\DataArraySerializer:
 
     App\Core\Http\Annotation\HttpAnnotationResolver:
@@ -67,3 +68,7 @@ services:
     App\Core\Http\ParamConverter\PaginationParamConverter:
         tags:
             - { name: 'request.param_converter', priority: -2, converter: 'pagination' }
+
+    App\Core\Http\ParamConverter\FiltersParamConverter:
+        tags:
+            - { name: 'request.param_converter', priority: -2, converter: 'filters' }

@@ -7,3 +7,4 @@ services:
 
     App\Post\Http\AddPostAction:
     App\Post\Http\LikePostAction:
+    App\Post\Http\SearchPostAction:

@@ -67,9 +67,9 @@ trait RepositoryTrait
      *
      * @param BaseSpecification|null $criteria
      *
-     * @return ArrayCollection
+     * @return array
      */
-    public function search(?BaseSpecification $criteria = null): ArrayCollection
+    public function search(?BaseSpecification $criteria = null): array
     {
         $query = $this->prepareQuery($criteria);
 

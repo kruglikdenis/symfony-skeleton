@@ -42,6 +42,7 @@ class LoadPosts extends AbstractFixture implements OrderedFixtureInterface
         foreach (range(1, self::FIXTURES_COUNT) as $i) {
             $post = Post::builder()
                 ->setAuthor($user->id())
+                ->withTitle($this->faker->title)
                 ->setDescription($this->faker->text(), $this->extractor)
                 ->build();
 

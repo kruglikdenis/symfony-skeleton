@@ -4,7 +4,7 @@ namespace App\Post\Handler;
 
 
 use App\Post\Entity\Post;
-use App\Post\Entity\Posts;
+use App\Post\Entity\PostRepository;
 use App\Post\Entity\TagExtractor;
 use App\Post\Http\Command\AddPostCommand;
 use Broadway\CommandHandling\SimpleCommandHandler;
@@ -12,7 +12,7 @@ use Broadway\CommandHandling\SimpleCommandHandler;
 class AddPostHandler extends SimpleCommandHandler
 {
     /**
-     * @var Posts
+     * @var PostRepository
      */
     private $posts;
 
@@ -21,7 +21,7 @@ class AddPostHandler extends SimpleCommandHandler
      */
     private $tagExtractor;
 
-    public function __construct(Posts $posts, TagExtractor $tagExtractor)
+    public function __construct(PostRepository $posts, TagExtractor $tagExtractor)
     {
         $this->posts = $posts;
         $this->tagExtractor = $tagExtractor;
@@ -32,6 +32,7 @@ class AddPostHandler extends SimpleCommandHandler
         $request = $command->request();
         $post = Post::builder()
             ->setAuthor($command->authorId())
+            ->withTitle($request->title)
             ->setDescription($request->description, $this->tagExtractor)
             ->setMedia($request->media)
             ->build();

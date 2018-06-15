@@ -8,16 +8,32 @@ class Filter
     /**
      * @var string
      */
-    private $field;
+    private $name;
 
     /**
      * @var mixed
      */
     private $value;
 
-    public function __construct(string $field, $value)
+    public function __construct(string $name, $value)
     {
-        $this->field = $field;
+        $this->name = $name;
         $this->value = $value;
+    }
+
+    /**
+     * @return string
+     */
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function value()
+    {
+        return $this->value;
     }
 }

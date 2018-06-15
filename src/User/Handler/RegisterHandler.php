@@ -5,7 +5,7 @@ namespace App\User\Handler;
 
 use App\Security\Entity\Credential;
 use App\User\Entity\User;
-use App\User\Entity\Users;
+use App\User\Entity\UserRepository;
 use App\User\Http\RegisterCommand;
 use Broadway\CommandHandling\SimpleCommandHandler;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 class RegisterHandler extends SimpleCommandHandler
 {
     /**
-     * @var Users
+     * @var UserRepository
      */
     private $users;
 
@@ -22,7 +22,7 @@ class RegisterHandler extends SimpleCommandHandler
      */
     private $encoder;
 
-    public function __construct(Users $users, EncoderFactoryInterface $encoder)
+    public function __construct(UserRepository $users, EncoderFactoryInterface $encoder)
     {
         $this->users = $users;
         $this->encoder = $encoder;

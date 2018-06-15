@@ -3,9 +3,13 @@
 namespace App\Post\Entity;
 
 
-
 class PostBuilder
 {
+    /**
+     * @var string
+     */
+    private $title;
+
     /**
      * @var string
      */
@@ -34,6 +38,18 @@ class PostBuilder
     public function build(): Post
     {
         return new Post($this);
+    }
+
+    /**
+     * @param string $title
+     *
+     * @return PostBuilder
+     */
+    public function withTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -72,6 +88,14 @@ class PostBuilder
         $this->author = new User($id);
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function title(): string
+    {
+        return $this->title;
     }
 
     /**

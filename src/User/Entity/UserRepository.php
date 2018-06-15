@@ -3,22 +3,9 @@
 namespace App\User\Entity;
 
 
-use Doctrine\ORM\EntityManagerInterface;
+use App\Core\Entity\RepositoryTrait;
 
-class UserRepository implements Users
+class UserRepository
 {
-    private $em;
-
-    public function __construct(EntityManagerInterface $em)
-    {
-        $this->em = $em;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function add(User $user): void
-    {
-        $this->em->persist($user);
-    }
+    use RepositoryTrait;
 }

@@ -3,7 +3,7 @@
 namespace App\Post\Handler;
 
 
-use App\Post\Entity\Posts;
+use App\Post\Entity\PostRepository;
 use App\Post\Entity\User;
 use App\Post\Http\Command\LikePostCommand;
 use Broadway\CommandHandling\SimpleCommandHandler;
@@ -11,11 +11,11 @@ use Broadway\CommandHandling\SimpleCommandHandler;
 class LikePostHandler extends SimpleCommandHandler
 {
     /**
-     * @var Posts
+     * @var PostRepository
      */
     private $posts;
 
-    public function __construct(Posts $posts)
+    public function __construct(PostRepository $posts)
     {
         $this->posts = $posts;
     }

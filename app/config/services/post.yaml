@@ -10,7 +10,7 @@ services:
     App\Post\Service\DoctrineTagsExtractor:
         arguments:
             - '@App\Post\Service\TextTagExtractor'
-    App\Post\Entity\Posts:
+    App\Post\Entity\PostRepository:
         tags:
             - { name: 'app.repository', entity: 'App\Post\Entity\Post' }
 

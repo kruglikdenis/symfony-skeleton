@@ -23,6 +23,12 @@ class Post
 
     /**
      * @var string
+     * @ORM\Column(type="string", length=200)
+     */
+    private $title;
+
+    /**
+     * @var string
      * @ORM\Column(type="string")
      */
     private $description;
@@ -49,9 +55,11 @@ class Post
     {
         $this->id = $this->generateUuid();
 
+        $this->title = $builder->title();
         $this->description = $builder->description();
         $this->media = $builder->media();
         $this->author = $builder->author();
+
         $this->tags = new ArrayCollection($builder->tags());
         $this->likes = new ArrayCollection();
     }

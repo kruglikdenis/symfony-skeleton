@@ -4,10 +4,10 @@ services:
         autoconfigure: true
         public: true
 
-    App\User\Entity\Users: '@App\User\Entity\UserRepository'
-
     App\User\Http\Transformer\UserTransformer:
 
     App\User\Entity\UserRepository:
+        tags:
+            - { name: 'app.repository', entity: 'App\User\Entity\User' }
     App\User\Handler\RegisterHandler:
         tags: [ 'broadway.command_handler' ]

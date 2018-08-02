@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Http\ParamConverter;
+namespace App\Core\Http\Resolver;
 
 
 use App\Core\Http\Pagination;

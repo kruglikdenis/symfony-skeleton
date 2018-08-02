@@ -2,31 +2,24 @@
 
 namespace App\Post\Http;
 
-use App\Core\Http\RequestObject;
-use Symfony\Component\HttpFoundation\Request;
+use App\Core\Http\RequestDto;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class AddPostRequest extends RequestObject
+class AddPostRequest implements RequestDto
 {
+    /**
+     * @Assert\NotBlank()
+     */
     public $title;
 
+    /**
+     * @Assert\Uuid()
+     * @Assert\NotBlank()
+     */
     public $media;
 
+    /**
+     * @Assert\NotBlank()
+     */
     public $description;
-
-    public function rules()
-    {
-        return new Assert\Collection([
-            'title' => new Assert\NotBlank(),
-            'media_id' => new Assert\NotBlank(),
-            'description' => new Assert\NotBlank()
-        ]);
-    }
-
-    public function map(Request $request): void
-    {
-        $this->title = $request->get('title');
-        $this->description = $request->get('description');
-        $this->media = $request->get('media_id');
-    }
 }

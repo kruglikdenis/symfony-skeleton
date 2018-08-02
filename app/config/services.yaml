@@ -65,10 +65,14 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }
 
-    App\Core\Http\ParamConverter\PaginationParamConverter:
+    App\Core\Http\Resolver\PaginationParamConverter:
         tags:
             - { name: 'request.param_converter', priority: -2, converter: 'pagination' }
 
-    App\Core\Http\ParamConverter\FiltersParamConverter:
+    App\Core\Http\Resolver\FiltersParamConverter:
         tags:
             - { name: 'request.param_converter', priority: -2, converter: 'filters' }
+
+    App\Core\Http\Resolver\RequestDtoResolver:
+        tags:
+            - { name: 'controller.argument_value_resolver', priority: 50 }

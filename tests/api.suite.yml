@@ -1,7 +1,6 @@
 actor: ApiTester
 modules:
     enabled:
-        - \Helper\Api
         - Asserts
         - Symfony
         - REST:
